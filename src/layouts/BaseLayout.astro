@@ -3,9 +3,10 @@ import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingActionButtons from '../components/FloatingActionButtons.jsx';
-import HeaderSearchModal from '../components/HeaderSearchModal.jsx';
 import MobileNav from '../components/MobileNav.jsx';
 import EngagementDrawer from '../components/EngagementDrawer.astro';
+import SiteSearchModal from '../components/SiteSearchModal.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 import '../styles/global.css';
 
@@ -83,6 +84,7 @@ const {
         }, 1500);
       });
     </script>
+    <ViewTransitions />
   </head>
   <body>
     <noscript>
@@ -100,8 +102,10 @@ const {
     </div>
 
     <!-- React Islands -->
-    <HeaderSearchModal client:idle />
     <MobileNav client:load />
+
+    <!-- Site search modal (vanilla JS, no hydration required) -->
+    <SiteSearchModal />
 
     <!-- Recent Posts / Contact Us drawer -->
     <EngagementDrawer />
