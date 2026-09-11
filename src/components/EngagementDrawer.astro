@@ -1,0 +1,239 @@
+---
+const APP_URL = 'https://script.google.com/macros/s/AKfycbxDzomOX-pFvyGVQCgrNL2s24I9hPmZtzX61c0R9V51iNeA0JsorF2O-ZWNKEYSJ9gv/exec';
+
+const posts = [
+  { title: 'Benefits of Becoming our Associate', tag: 'CAREERS', date: '2016-11-04', href: '/post/benefits-associate', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367752/eurocert/r7.png.png' },
+  { title: 'Become our Associate', tag: 'CAREERS', date: '2016-11-15', href: '/post/become-associate', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367748/eurocert/r6.png.png' },
+  { title: 'SA 8000 Certification', tag: 'SA 8000', date: '2017-02-08', href: '/post/sa-8000-certification', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367743/eurocert/r5.png.png' },
+  { title: 'Role of Self Assessment Questionnaire in Sedex Audit', tag: 'SEDEX', date: '2023-05-10', href: '/post/sedex-self-assessment', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367739/eurocert/r4.png.png' },
+  { title: 'C-TPAT Compliance vs C-TPAT Validation', tag: 'C-TPAT', date: '2023-06-20', href: '/post/ctpat-compliance-vs-validation', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367735/eurocert/r3.png.png' },
+  { title: 'C-TPAT - The NEW Minimum Security Criteria from CBP for Manufacturers and Exports', tag: 'C-TPAT', date: '2023-07-15', href: '/post/ctpat-minimum-security-criteria', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367726/eurocert/r2.png.png' },
+  { title: 'SLCP Certification | SLCP | Eurocert Asia', tag: 'SOCIAL AUDITS', date: '2023-08-02', href: '/post/slcp-certification', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367718/eurocert/r1.png.png' }
+];
+
+const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<!-- Fixed right-edge quick-links toolbar -->
+<div id="ec-toolbar" class="fixed right-0 top-1/3 z-[9998] -translate-y-1/2 flex flex-col w-11 sm:w-12 rounded-l-2xl overflow-hidden shadow-[0_0_28px_rgba(0,0,0,0.35)] border border-eurogold-400/35 border-r-0" role="toolbar" aria-label="Quick links">
+  <button type="button" data-ec-open="posts" class="relative flex flex-1 min-h-[3.25rem] items-center justify-center bg-eurogold-400 text-[#030a16] hover:bg-eurogold-300 transition-colors" aria-label="Recent posts">
+    <i class="fas fa-newspaper text-base sm:text-lg" aria-hidden="true"></i>
+    <span class="absolute top-2 right-1.5 w-2 h-2 rounded-full bg-red-500 ring-2 ring-eurogold-400" aria-hidden="true"></span>
+  </button>
+  <div class="h-px bg-[#030a16]/15 shrink-0" aria-hidden="true"></div>
+  <button type="button" data-ec-open="contact" class="relative flex flex-1 min-h-[3.25rem] items-center justify-center bg-[#030a16] text-eurogold-400 hover:bg-eurogold-400/10 transition-colors" aria-label="Contact us">
+    <i class="fas fa-envelope text-base sm:text-lg" aria-hidden="true"></i>
+  </button>
+</div>
+
+<!-- Backdrop -->
+<div id="ec-backdrop" class="fixed inset-0 z-[9998] bg-black/30 backdrop-blur-sm hidden" data-ec-close></div>
+
+<!-- Slide-over drawer -->
+<div id="ec-drawer" class="fixed top-0 right-0 h-full z-[9999] transition-transform duration-500 ease-in-out hidden" style="width:min(100vw,420px);transform:translateX(100%)">
+  <div class="h-full bg-[#030a16] border-l border-eurogold-400/20 shadow-[-20px_0_60px_-10px_rgba(212,168,67,0.15)] flex flex-col">
+    <div class="px-4 pt-4 pb-3 border-b border-eurogold-400/10 shrink-0 bg-eurogold-400/5">
+      <div class="flex gap-2 p-1 rounded-2xl bg-black/25 border border-white/5">
+        <button type="button" data-ec-tab="posts" class="ec-tab flex-1 py-3 px-2 heading-font text-[9px] font-bold uppercase tracking-wider transition-all rounded-xl border border-transparent text-white/50 hover:text-white/80 hover:bg-white/5"><i class="fas fa-newspaper mr-1 opacity-80"></i> Recent Posts</button>
+        <button type="button" data-ec-tab="contact" class="ec-tab flex-1 py-3 px-2 heading-font text-[9px] font-bold uppercase tracking-wider transition-all rounded-xl border border-transparent text-white/50 hover:text-white/80 hover:bg-white/5"><i class="fas fa-envelope mr-1 opacity-80"></i> Contact Us</button>
+      </div>
+      <div class="flex justify-end mt-3">
+        <button type="button" data-ec-close class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white transition-all" aria-label="Close panel"><i class="fas fa-times text-sm"></i></button>
+      </div>
+    </div>
+
+    <!-- Recent Posts panel -->
+    <div id="ec-panel-posts" class="ec-panel flex-1 min-h-0 flex-col">
+      <div class="px-5 py-3 border-b border-eurogold-400/10 flex items-center gap-3 shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-eurogold-400 flex items-center justify-center shrink-0"><i class="fas fa-newspaper text-[#030a16] text-sm"></i></div>
+        <div>
+          <h4 class="heading-font text-xs font-bold text-white uppercase tracking-wider">Latest updates</h4>
+          <p class="text-eurogold-400/60 text-[10px]">{posts.length} articles</p>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        {posts.map((post) => (
+          <a href={post.href} data-ec-close-link class="flex gap-4 px-5 py-4 border-b border-white/5 hover:bg-eurogold-400/5 transition-all duration-300 cursor-pointer group">
+            <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10 group-hover:border-eurogold-400/30 transition-colors">
+              <img src={post.image} alt={post.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="heading-font text-[8px] font-bold text-eurogold-400 uppercase tracking-wider px-2 py-0.5 rounded-full bg-eurogold-400/10 border border-eurogold-400/20">{post.tag}</span>
+                <span class="text-white/25 text-[9px]">{fmt.format(new Date(post.date))}</span>
+              </div>
+              <p class="text-white/70 text-[13px] leading-snug group-hover:text-eurogold-400 transition-colors line-clamp-2">{post.title}</p>
+              <div class="flex items-center gap-1.5 mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="heading-font text-[8px] font-bold text-eurogold-400/60 uppercase tracking-wider">Read More</span>
+                <i class="fas fa-arrow-right text-eurogold-400/60 text-[7px]"></i>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="px-6 py-4 border-t border-eurogold-400/10 shrink-0 bg-eurogold-400/5">
+        <p class="text-eurogold-400/40 text-[10px] heading-font uppercase tracking-wider text-center">Eurocert News &amp; Updates</p>
+      </div>
+    </div>
+
+    <!-- Contact panel -->
+    <div id="ec-panel-contact" class="ec-panel flex-1 min-h-0 flex-col hidden">
+      <div class="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-5">
+        <div>
+          <h4 class="heading-font text-[10px] text-eurogold-400 tracking-[0.35em] uppercase font-bold mb-2">Get in touch</h4>
+          <p class="text-white/55 text-sm leading-relaxed">
+            Send a message – our team usually replies within one business day. For full details and FAQs, visit <a href="/contact" class="text-eurogold-400 hover:text-eurogold-300 underline underline-offset-2">the Contact page</a>.
+          </p>
+        </div>
+        <div class="space-y-3 text-sm text-white/70">
+          <a href="tel:+919316012883" class="flex items-center gap-3 hover:text-eurogold-400 transition-colors"><span class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center text-eurogold-400 shrink-0"><i class="fas fa-phone-alt text-xs"></i></span><span class="font-semibold">+91 9316012883</span></a>
+          <a href="mailto:info@eurocert.in" class="flex items-center gap-3 hover:text-eurogold-400 transition-colors"><span class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center text-eurogold-400 shrink-0"><i class="fas fa-envelope text-xs"></i></span><span class="font-semibold break-all">info@eurocert.in</span></a>
+          <p class="flex items-start gap-3 pt-1"><span class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center text-eurogold-400 shrink-0 mt-0.5"><i class="fas fa-map-marker-alt text-xs"></i></span><span>Panchkula, Haryana, India</span></p>
+        </div>
+        <form id="ec-contact-form" data-app-url={APP_URL} class="space-y-3">
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Full name <span class="text-red-400">*</span></label>
+              <input type="text" name="name" required placeholder="Your name" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-white/35 focus:outline-none focus:border-eurogold-400 transition" />
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Email <span class="text-red-400">*</span></label>
+              <input type="email" name="email" required placeholder="you@company.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-white/35 focus:outline-none focus:border-eurogold-400 transition" />
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Phone <span class="text-red-400">*</span></label>
+              <input type="tel" name="phone" required placeholder="+91 ..." class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-white/35 focus:outline-none focus:border-eurogold-400 transition" />
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Service</label>
+              <select name="service" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-eurogold-400 transition" style="color-scheme:dark">
+                <option value="" selected>Select a service</option>
+                <option>CE Certification</option>
+                <option>ISO Certifications</option>
+                <option>FSSC 22000</option>
+                <option>SA 8000</option>
+                <option>Environmental Certifications</option>
+                <option>Social Audits</option>
+                <option>Sustainability Certifications</option>
+                <option>Food Safety Audits</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Message <span class="text-red-400">*</span></label>
+            <textarea name="message" rows="4" required placeholder="How can we help?" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-white/35 focus:outline-none focus:border-eurogold-400 transition"></textarea>
+          </div>
+          <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5"><i class="fas fa-robot mr-1"></i> Verify You Are Human</label>
+            <div class="flex items-center gap-3">
+              <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-black/25 border border-white/10">
+                <span id="ec-captcha-1" class="heading-font text-base font-bold text-white">1</span>
+                <span class="text-white/50 font-bold">+</span>
+                <span id="ec-captcha-2" class="heading-font text-base font-bold text-white">1</span>
+                <span class="text-white/50 font-bold">=</span>
+              </div>
+              <input type="number" name="captcha" required placeholder="?" class="w-full max-w-[72px] bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white text-center focus:outline-none focus:border-eurogold-400 transition" style="color-scheme:dark" />
+              <button type="button" id="ec-refresh-captcha" class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-white/50 hover:text-eurogold-400 hover:bg-white/15 transition-all shrink-0" title="Refresh captcha"><i class="fas fa-sync-alt text-xs"></i></button>
+            </div>
+          </div>
+          <div id="ec-form-status" class="hidden p-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs text-center"></div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-eurogold-400 text-[#031022] heading-font text-[10px] font-bold uppercase tracking-widest hover:bg-eurogold-300 transition disabled:opacity-60"><i class="fas fa-paper-plane mr-1.5"></i><span>Send message</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+  var drawer = document.getElementById('ec-drawer');
+  var backdrop = document.getElementById('ec-backdrop');
+  var status = document.getElementById('ec-form-status');
+  var activeTab = 'posts';
+  var c1 = 0, c2 = 0;
+  if (!drawer) return;
+
+  function show(el) { el.style.transform = 'translateX(0)'; el.style.display = 'flex'; }
+  function hide(el) { el.style.transform = 'translateX(100%)'; el.style.display = 'none'; }
+  function setBackdrop(on) { backdrop && (backdrop.style.display = on ? 'block' : 'none'); }
+
+  function open(tab) { activeTab = tab; show(drawer); setBackdrop(true); renderTab(); }
+  function close() { hide(drawer); setBackdrop(false); }
+
+  function renderTab() {
+    var pPosts = document.getElementById('ec-panel-posts');
+    var pContact = document.getElementById('ec-panel-contact');
+    pPosts.classList.toggle('hidden', activeTab !== 'posts');
+    pContact.classList.toggle('hidden', activeTab !== 'contact');
+    document.querySelectorAll('[data-ec-tab]').forEach(function (b) {
+      var on = b.getAttribute('data-ec-tab') === activeTab;
+      b.className = 'ec-tab flex-1 py-3 px-2 heading-font text-[9px] font-bold uppercase tracking-wider transition-all rounded-xl border ' + (on ? 'bg-eurogold-400 text-[#030a16] shadow-md' : 'border-transparent text-white/50 hover:text-white/80 hover:bg-white/5');
+    });
+  }
+
+  document.querySelectorAll('[data-ec-open]').forEach(function (b) {
+    b.addEventListener('click', function () { open(b.getAttribute('data-ec-open')); });
+  });
+  document.querySelectorAll('[data-ec-tab]').forEach(function (b) {
+    b.addEventListener('click', function () { activeTab = b.getAttribute('data-ec-tab'); renderTab(); });
+  });
+  document.querySelectorAll('[data-ec-close], [data-ec-close-link]').forEach(function (b) {
+    b.addEventListener('click', close);
+  });
+  if (backdrop) backdrop.addEventListener('click', close);
+
+  function genCaptcha() {
+    c1 = Math.floor(Math.random() * 10) + 1;
+    c2 = Math.floor(Math.random() * 10) + 1;
+    var e1 = document.getElementById('ec-captcha-1');
+    var e2 = document.getElementById('ec-captcha-2');
+    if (e1) e1.textContent = c1;
+    if (e2) e2.textContent = c2;
+    var inp = document.querySelector('#ec-contact-form [name="captcha"]');
+    if (inp) inp.value = '';
+  }
+  genCaptcha();
+  var refresh = document.getElementById('ec-refresh-captcha');
+  if (refresh) refresh.addEventListener('click', genCaptcha);
+
+  var form = document.getElementById('ec-contact-form');
+  if (form) {
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (status) { status.style.display = 'none'; }
+      var ans = parseInt(form.querySelector('[name="captcha"]').value, 10);
+      if (isNaN(ans)) { showStatus('Please solve the captcha.'); return; }
+      if (ans !== c1 + c2) { showStatus('Captcha answer is incorrect. Try again.'); genCaptcha(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn.querySelector('span');
+      btn.disabled = true;
+      label.textContent = 'Sending...';
+      var payload = {
+        formType: 'contact',
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        service: form.service.value || '-',
+        message: form.message.value,
+        source: 'Engagement Sidebar'
+      };
+      fetch(form.getAttribute('data-app-url'), { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+        .then(function (r) { return r.text(); })
+        .then(function (t) {
+          if (t.indexOf('SUCCESS') > -1) { window.location.href = '/thank-you'; }
+          else { showStatus('Submission failed. Please try again.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); }
+        })
+        .catch(function () { showStatus('Something went wrong. Please try again later.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); });
+    });
+  }
+
+  function showStatus(msg) {
+    if (status) { status.textContent = msg; status.style.display = 'block'; }
+  }
+  window.openQuickContact = function () { open('contact'); };
+  window.openRecentPosts = function () { open('posts'); };
+})();
+</script>

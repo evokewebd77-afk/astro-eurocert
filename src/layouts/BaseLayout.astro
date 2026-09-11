@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import FloatingActionButtons from '../components/FloatingActionButtons.jsx';
 import HeaderSearchModal from '../components/HeaderSearchModal.jsx';
 import MobileNav from '../components/MobileNav.jsx';
+import EngagementDrawer from '../components/EngagementDrawer.astro';
 
 import '../styles/global.css';
 
@@ -101,6 +102,9 @@ const {
     <!-- React Islands -->
     <HeaderSearchModal client:idle />
     <MobileNav client:load />
+
+    <!-- Recent Posts / Contact Us drawer -->
+    <EngagementDrawer />
 
     <!-- SOPHIA Chatbot Widget -->
     <script is:inline src="/sophia-widget.js" defer></script>
