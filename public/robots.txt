@@ -1,8 +1,10 @@
-# https://www.eurocert.asia — update sitemap URL if the production domain differs
 User-agent: *
 Allow: /
 
-Disallow: /admin
-Disallow: /admin/
+Disallow: /thank-you/
+Disallow: /ctpat-login/
+Disallow: /ctpat-register/
+Disallow: /ctpat-forgot-password/
+Disallow: /grievance/
 
 Sitemap: https://www.eurocert.asia/sitemap.xml
