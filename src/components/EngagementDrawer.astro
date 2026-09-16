@@ -106,20 +106,25 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
               <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Phone <span class="text-red-400">*</span></label>
               <input type="tel" name="phone" required placeholder="+91 ..." class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-white/35 focus:outline-none focus:border-eurogold-400 transition" />
             </div>
-            <div>
+            <div class="relative" data-custom-select>
               <label class="block text-[10px] font-bold uppercase tracking-widest text-eurogold-400/80 mb-1.5">Service</label>
-              <select name="service" class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-eurogold-400 transition" style="color-scheme:dark">
-                <option value="" selected>Select a service</option>
-                <option>CE Certification</option>
-                <option>ISO Certifications</option>
-                <option>FSSC 22000</option>
-                <option>SA 8000</option>
-                <option>Environmental Certifications</option>
-                <option>Social Audits</option>
-                <option>Sustainability Certifications</option>
-                <option>Food Safety Audits</option>
-                <option>Other</option>
-              </select>
+              <input type="hidden" name="service" value="" />
+              <button type="button" data-select-trigger class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white/70 text-left focus:outline-none focus:border-eurogold-400 transition flex items-center justify-between gap-2">
+                <span data-select-label class="text-white/35">Select a service</span>
+                <svg class="w-3 h-3 shrink-0 text-white/40 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div data-select-options class="hidden absolute left-0 right-0 top-full mt-1 z-50 bg-[#0b1628] border border-white/10 rounded-xl shadow-2xl shadow-black/60 max-h-48 overflow-y-auto">
+                <button type="button" data-select-option data-value="" class="w-full text-left px-4 py-2.5 text-xs text-white/40 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">Select a service</button>
+                <button type="button" data-select-option data-value="CE Certification" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">CE Certification</button>
+                <button type="button" data-select-option data-value="ISO Certifications" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">ISO Certifications</button>
+                <button type="button" data-select-option data-value="FSSC 22000" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">FSSC 22000</button>
+                <button type="button" data-select-option data-value="SA 8000" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">SA 8000</button>
+                <button type="button" data-select-option data-value="Environmental Certifications" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">Environmental Certifications</button>
+                <button type="button" data-select-option data-value="Social Audits" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">Social Audits</button>
+                <button type="button" data-select-option data-value="Sustainability Certifications" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">Sustainability Certifications</button>
+                <button type="button" data-select-option data-value="Food Safety Audits" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">Food Safety Audits</button>
+                <button type="button" data-select-option data-value="Other" class="w-full text-left px-4 py-2.5 text-xs text-white/80 hover:bg-eurogold-400/10 hover:text-eurogold-400 transition border-b border-white/5 last:border-b-0">Other</button>
+              </div>
             </div>
           </div>
           <div>
@@ -233,6 +238,46 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
   function showStatus(msg) {
     if (status) { status.textContent = msg; status.style.display = 'block'; }
   }
+  // --- Custom dropdown for Service field ---
+  document.querySelectorAll('[data-custom-select]').forEach(function (wrapper) {
+    var trigger = wrapper.querySelector('[data-select-trigger]');
+    var label   = wrapper.querySelector('[data-select-label]');
+    var optionsWrap = wrapper.querySelector('[data-select-options]');
+    var hiddenInput = wrapper.querySelector('input[type="hidden"]');
+    var buttons = wrapper.querySelectorAll('[data-select-option]');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      // close any other open dropdowns first
+      document.querySelectorAll('[data-select-options]').forEach(function (o) {
+        if (o !== optionsWrap) o.classList.add('hidden');
+      });
+      optionsWrap.classList.toggle('hidden');
+      trigger.classList.toggle('border-eurogold-400');
+    });
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var val = btn.getAttribute('data-value') || '';
+        var txt = btn.textContent.trim();
+        hiddenInput.value = val;
+        label.textContent = txt;
+        label.className = val ? 'text-white' : 'text-white/35';
+        optionsWrap.classList.add('hidden');
+        trigger.classList.remove('border-eurogold-400');
+      });
+    });
+  });
+
+  // close any open custom dropdown on outside click
+  document.addEventListener('click', function () {
+    document.querySelectorAll('[data-select-options]').forEach(function (o) {
+      o.classList.add('hidden');
+    });
+  });
+
   window.openQuickContact = function () { open('contact'); };
   window.openRecentPosts = function () { open('posts'); };
 })();
