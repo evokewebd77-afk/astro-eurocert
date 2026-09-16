@@ -226,9 +226,13 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
         source: 'Engagement Sidebar'
       };
       fetch(form.getAttribute('data-app-url'), { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
-        .then(function (r) { return r.text(); })
-        .then(function (t) {
-          if (t.indexOf('SUCCESS') > -1) { window.location.href = '/thank-you'; }
+        .then(function (r) {
+          return r.text().then(function (t) { return { ok: r.ok, text: t, status: r.status }; });
+        })
+        .then(function (res) {
+          var t = (res.text || '') + '';
+          var ok = res.ok || res.status === 200 || t.indexOf('SUCCESS') > -1 || t.indexOf('success') > -1;
+          if (ok) { window.location.href = '/thank-you'; }
           else { showStatus('Submission failed. Please try again.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); }
         })
         .catch(function () { showStatus('Something went wrong. Please try again later.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); });
