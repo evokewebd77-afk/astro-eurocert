@@ -49,36 +49,55 @@ export default function GlobalPresenceMap() {
 
     const loadLeafletScript = () => {
       return new Promise((resolve, reject) => {
-        if (window.L) {
-          resolve(window.L);
-          return;
-        }
-
-        // Add Leaflet CSS
-        if (!document.getElementById('leaflet-css-cdn')) {
-          const link = document.createElement('link');
-          link.id = 'leaflet-css-cdn';
-          link.rel = 'stylesheet';
-          link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-          document.head.appendChild(link);
-        }
-
-        // Add Leaflet Script
-        if (!document.getElementById('leaflet-js-cdn')) {
-          const script = document.createElement('script');
-          script.id = 'leaflet-js-cdn';
-          script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-          script.onload = () => resolve(window.L);
-          script.onerror = () => reject(new Error('Leaflet script failed to load'));
-          document.head.appendChild(script);
-        } else {
-          const poll = setInterval(() => {
-            if (window.L) {
-              clearInterval(poll);
-              resolve(window.L);
+        const ensureCss = () =>
+          new Promise((resolveCss) => {
+            const existing = document.getElementById('leaflet-css-cdn');
+            if (existing) {
+              // Already applied -> resolve, otherwise wait for its load event
+              if (existing.sheet) return resolveCss();
+              existing.addEventListener('load', resolveCss);
+              existing.addEventListener('error', resolveCss);
+              return;
             }
-          }, 50);
-        }
+            const link = document.createElement('link');
+            link.id = 'leaflet-css-cdn';
+            link.rel = 'stylesheet';
+            link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+            link.addEventListener('load', resolveCss);
+            link.addEventListener('error', resolveCss);
+            document.head.appendChild(link);
+          });
+
+        const ensureScript = () =>
+          new Promise((resolveScript, rejectScript) => {
+            if (window.L) {
+              resolveScript(window.L);
+              return;
+            }
+            if (document.getElementById('leaflet-js-cdn')) {
+              const poll = setInterval(() => {
+                if (window.L) {
+                  clearInterval(poll);
+                  resolveScript(window.L);
+                }
+              }, 50);
+              return;
+            }
+            const script = document.createElement('script');
+            script.id = 'leaflet-js-cdn';
+            script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+            script.onload = () => resolveScript(window.L);
+            script.onerror = () => rejectScript(new Error('Leaflet script failed to load'));
+            document.head.appendChild(script);
+          });
+
+        // Guarantee the Leaflet CSS is applied BEFORE the map initializes.
+        // Otherwise the tile panes are not absolutely positioned and the
+        // tiles stack up, making the map "keep going" as the page scrolls.
+        ensureCss()
+          .then(ensureScript)
+          .then(resolve)
+          .catch(reject);
       });
     };
 
@@ -211,10 +230,20 @@ export default function GlobalPresenceMap() {
       }
     };
 
+    const onResize = () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.invalidateSize();
+      }
+    };
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+
     initMap();
 
     return () => {
       isMounted = false;
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
@@ -240,6 +269,19 @@ export default function GlobalPresenceMap() {
         }
         .leaflet-container {
           background: #030a16 !important;
+        }
+        .leaflet-tile-pane, .leaflet-overlay-pane, .leaflet-shadow-pane, .leaflet-marker-pane, .leaflet-tooltip-pane, .leaflet-popup-pane {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+        .leaflet-tile-container, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer {
+          position: absolute !important;
+          left: 0;
+          top: 0;
+        }
+        .leaflet-container {
+          overflow: hidden;
         }
         .leaflet-control-zoom a {
           background-color: #04122a !important;
