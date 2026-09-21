@@ -165,6 +165,22 @@ RewriteRule ^slides/dsfd/?$ / [R=301,L]
 RewriteRule ^payment/?$ /contact/ [R=301,L]
 RewriteRule ^our-associates/?$ / [R=301,L]
 
+# ============================================================
+# Legacy /food/ and /social/ URL structure fixes (SE Ranking 4XX)
+# ============================================================
+RewriteRule ^food/?$ /food-certification/ [R=301,L]
+RewriteRule ^food/haccp/?$ /food-certification/haccp/ [R=301,L]
+RewriteRule ^food/ifs/?$ /food-certification/ifs/ [R=301,L]
+RewriteRule ^food/fssc-22000/?$ /food-certification/fssc-22000/ [R=301,L]
+RewriteRule ^food/eu-organic/?$ /food-certification/eu-organic/ [R=301,L]
+RewriteRule ^food/(.+)$ /food-certification/$1 [R=301,L]
+RewriteRule ^social/?$ /social-audits/ [R=301,L]
+RewriteRule ^social/c-tpat/?$ /social-audits/ctpat/ [R=301,L]
+RewriteRule ^social/sa-8000/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^social/iso-26000/?$ /social-audits/iso-26000/ [R=301,L]
+RewriteRule ^social/(.+)$ /social-audits/$1 [R=301,L]
+RewriteRule ^management-system/iso-26000/?$ /social-audits/iso-26000/ [R=301,L]
+
 # Catch-alls for remaining city / CE variants
 RewriteRule ^sa-8000-certification-in-[a-z0-9-]+/?$ /social-audits/sa-8000/ [R=301,L]
 RewriteRule ^sedex-audit-smeta-audit-in-[a-z0-9-]+/?$ /social-audits/sedex/ [R=301,L]

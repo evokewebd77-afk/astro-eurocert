@@ -32,7 +32,7 @@
           <li><a href="/forced-labour-policy" class="text-white/50 hover:text-eurogold-400 text-xs transition">Forced Labour Policy</a></li>
           <li><a href="/quality-policy" class="text-white/50 hover:text-eurogold-400 text-xs transition">Quality Policy</a></li>
           <li><a href="/privacy-policy" class="text-white/50 hover:text-eurogold-400 text-xs transition">Privacy Policy</a></li>
-          <li><a href="/certified-clients" class="text-white/50 hover:text-eurogold-400 text-xs transition">Clients</a></li>
+          <li><a href="/certified-clients" class="text-white/50 hover:text-eurogold-400 text-xs transition">Certified Clients</a></li>
           <li><a href="/product-catalogue" class="text-white/50 hover:text-eurogold-400 text-xs transition">Product Catalogue</a></li>
           <li><a href="/grievance" class="text-white/50 hover:text-eurogold-400 text-xs transition">Grievance</a></li>
         </ul>
@@ -110,11 +110,12 @@
     const btn = form.querySelector('[type="submit"]');
     btn.disabled = true;
     try {
-      await fetch('https://script.google.com/macros/s/AKfycby5cjN1eJ5gDmQFa0iUdaTa0QZu7QP-URhGlFDpBcYkf4vmfTSRF6NPDmJtRqqTQ6jbWQ/exec', {
+      await fetch('https://damnart-ai-guladab.n8n-wsk.com/webhook/eurocert-vanshita-landing', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
+      form.reset();
       form.classList.add('hidden');
       form.closest('div').querySelector('#ec-callback-ok').classList.remove('hidden');
       setTimeout(() => {

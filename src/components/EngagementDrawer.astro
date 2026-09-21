@@ -1,5 +1,5 @@
 ---
-const APP_URL = 'https://script.google.com/macros/s/AKfycby5cjN1eJ5gDmQFa0iUdaTa0QZu7QP-URhGlFDpBcYkf4vmfTSRF6NPDmJtRqqTQ6jbWQ/exec';
+const APP_URL = 'https://damnart-ai-guladab.n8n-wsk.com/webhook/eurocert-vanshita-landing';
 
 const posts = [
   { title: 'Benefits of Becoming our Associate', tag: 'CAREERS', date: '2016-11-04', href: '/post/benefits-associate', image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367752/eurocert/r7.png.png' },
@@ -232,7 +232,7 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
         .then(function (res) {
           var t = (res.text || '') + '';
           var ok = res.ok || res.status === 200 || t.indexOf('SUCCESS') > -1 || t.indexOf('success') > -1;
-          if (ok) { window.location.href = '/thank-you'; }
+          if (ok) { form.reset(); genCaptcha(); window.location.href = '/thank-you'; }
           else { showStatus('Submission failed. Please try again.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); }
         })
         .catch(function () { showStatus('Something went wrong. Please try again later.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); });
