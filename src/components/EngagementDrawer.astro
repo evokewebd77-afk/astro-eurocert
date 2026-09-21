@@ -30,7 +30,7 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
 <div id="ec-backdrop" class="fixed inset-0 z-[9998] bg-black/30 backdrop-blur-sm hidden" data-ec-close></div>
 
 <!-- Slide-over drawer -->
-<div id="ec-drawer" class="fixed top-0 right-0 h-full z-[9999] transition-transform duration-500 ease-in-out hidden" style="width:min(100vw,420px);transform:translateX(100%)">
+<div id="ec-drawer" class="fixed top-0 right-0 h-full z-[9999] transition-transform duration-500 ease-in-out hidden" style="width:min(100vw,420px);height:100vh;height:100dvh;max-height:100dvh;transform:translateX(100%)">
   <div class="h-full bg-[#030a16] border-l border-eurogold-400/20 shadow-[-20px_0_60px_-10px_rgba(212,168,67,0.15)] flex flex-col">
     <div class="px-4 pt-4 pb-3 border-b border-eurogold-400/10 shrink-0 bg-eurogold-400/5">
       <div class="flex gap-2 p-1 rounded-2xl bg-black/25 border border-white/5">
@@ -158,11 +158,12 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
   var backdrop = document.getElementById('ec-backdrop');
   var status = document.getElementById('ec-form-status');
   var activeTab = 'posts';
+  var isOpen = false;
   var c1 = 0, c2 = 0;
   if (!drawer) return;
 
-  function show(el) { el.style.transform = 'translateX(0)'; el.style.display = 'flex'; }
-  function hide(el) { el.style.transform = 'translateX(100%)'; el.style.display = 'none'; }
+  function show(el) { isOpen = true; el.style.display = 'flex'; requestAnimationFrame(function () { el.style.transform = 'translateX(0)'; }); }
+  function hide(el) { isOpen = false; el.style.transform = 'translateX(100%)'; setTimeout(function () { if (!isOpen) { el.style.display = 'none'; } }, 500); }
   function setBackdrop(on) { backdrop && (backdrop.style.display = on ? 'block' : 'none'); }
 
   function open(tab) { activeTab = tab; show(drawer); setBackdrop(true); renderTab(); }
