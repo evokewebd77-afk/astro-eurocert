@@ -3,95 +3,95 @@ import React, { useState, useEffect } from 'react';
 const MENU_ITEMS = [
   {
     title: 'CE Marking',
-    href: '/ce-certification',
+    href: '/ce-certification/',
     children: [
-      { title: 'Overview', href: '/ce-certification' },
-      { title: 'Machinery Directive', href: '/machinery' },
-      { title: 'Construction Products', href: '/construction-products' },
-      { title: 'Lifts Directive', href: '/lifts' },
-      { title: 'Pressure Equipment (PED)', href: '/ped' },
-      { title: 'ATEX Directive', href: '/atex' },
-      { title: 'LVD & EMC Directives', href: '/lvd-emc' },
-      { title: 'Marine Equipment', href: '/marine-equipment' },
-      { title: 'Railway Standards', href: '/railway' },
-      { title: 'Welder Qualifications', href: '/welder-qualifications' },
-      { title: 'Cement Certification', href: '/cement' },
-      { title: 'Electrical & Electronics', href: '/electrical-electronic-products' }
+      { title: 'Overview', href: '/ce-certification/' },
+      { title: 'Machinery Directive', href: '/machinery/' },
+      { title: 'Construction Products', href: '/construction-products/' },
+      { title: 'Lifts Directive', href: '/lifts/' },
+      { title: 'Pressure Equipment (PED)', href: '/ped/' },
+      { title: 'ATEX Directive', href: '/atex/' },
+      { title: 'LVD & EMC Directives', href: '/lvd-emc/' },
+      { title: 'Marine Equipment', href: '/marine-equipment/' },
+      { title: 'Railway Standards', href: '/railway/' },
+      { title: 'Welder Qualifications', href: '/welder-qualifications/' },
+      { title: 'Cement Certification', href: '/cement/' },
+      { title: 'Electrical & Electronics', href: '/electrical-electronic-products/' }
     ]
   },
   {
     title: 'Food & Agri',
-    href: '/food-certification',
+    href: '/food-certification/',
     children: [
-      { title: 'Overview', href: '/food-certification' },
-      { title: 'ISO 22000 Food Safety', href: '/food-certification/iso-22000' },
-      { title: 'FSSC 22000', href: '/food-certification/fssc-22000' },
-      { title: 'HACCP', href: '/food-certification/haccp' },
-      { title: 'GLOBALG.A.P.', href: '/food-certification/globalgap' },
-      { title: 'GLOBALG.A.P. GRASP', href: '/food-certification/globalgap-grasp' },
-      { title: 'GLOBALG.A.P. CoC', href: '/food-certification/globalgap-coc' },
-      { title: 'GLOBALG.A.P. SPRING', href: '/food-certification/globalgap-spring' },
-      { title: 'BRCGS Food Safety', href: '/food-certification/brcgs-food' },
-      { title: 'BRCGS Packaging', href: '/food-certification/brcgs-packaging' },
-      { title: 'IFS Food', href: '/food-certification/ifs-food' },
-      { title: 'Non-GMO Products', href: '/food-certification/non-gmo-products' }
+      { title: 'Overview', href: '/food-certification/' },
+      { title: 'ISO 22000 Food Safety', href: '/food-certification/iso-22000/' },
+      { title: 'FSSC 22000', href: '/food-certification/fssc-22000/' },
+      { title: 'HACCP', href: '/food-certification/haccp/' },
+      { title: 'GLOBALG.A.P.', href: '/food-certification/globalgap/' },
+      { title: 'GLOBALG.A.P. GRASP', href: '/food-certification/globalgap-grasp/' },
+      { title: 'GLOBALG.A.P. CoC', href: '/food-certification/globalgap-coc/' },
+      { title: 'GLOBALG.A.P. SPRING', href: '/food-certification/globalgap-spring/' },
+      { title: 'BRCGS Food Safety', href: '/food-certification/brc/' },
+      { title: 'BRCGS Packaging & Materials', href: '/food-certification/brc/' },
+      { title: 'IFS Food', href: '/food-certification/ifs/' },
+      { title: 'Non-GMO Products', href: '/food-certification/non-gmo-products/' }
     ]
   },
   {
     title: 'Social Audits',
-    href: '/social-audits',
+    href: '/social-audits/',
     children: [
-      { title: 'Overview', href: '/social-audits' },
-      { title: 'SEDEX / SMETA Audit', href: '/social-audits/sedex' },
-      { title: 'SA8000 Social Accountability', href: '/social-audits/sa-8000' },
-      { title: 'WRAP Audit', href: '/social-audits/wrap' },
-      { title: 'SLCP Social & Labor', href: '/social-audits/slcp' },
-      { title: 'C-TPAT Supply Chain', href: '/social-audits/ctpat' },
-      { title: 'Code of Conduct Audits', href: '/social-audits/code-of-conduct' },
-      { title: 'ISO 26000 Social Responsibility', href: '/social-audits/iso-26000' },
-      { title: 'ISO 28000 Supply Chain Security', href: '/social-audits/iso-28000' }
+      { title: 'Overview', href: '/social-audits/' },
+      { title: 'SEDEX / SMETA Audit', href: '/social-audits/sedex/' },
+      { title: 'SA8000 Social Accountability', href: '/social-audits/sa-8000/' },
+      { title: 'WRAP Audit', href: '/social-audits/wrap/' },
+      { title: 'SLCP Social & Labor', href: '/social-audits/slcp/' },
+      { title: 'C-TPAT Supply Chain', href: '/social-audits/ctpat/' },
+      { title: 'Code of Conduct Audits', href: '/social-audits/code-of-conduct/' },
+      { title: 'ISO 26000 Social Responsibility', href: '/social-audits/iso-26000/' },
+      { title: 'ISO 28000 Supply Chain Security', href: '/social-audits/iso-28000/' }
     ]
   },
   {
     title: 'Management Systems',
-    href: '/management-systems',
+    href: '/management-systems/',
     children: [
-      { title: 'Overview', href: '/management-systems' },
-      { title: 'ISO 9001 Quality', href: '/management-system/iso-9001' },
-      { title: 'ISO 14001 Environment', href: '/management-system/iso-14001' },
-      { title: 'ISO 45001 Occupational Safety', href: '/management-system/iso-45001' },
-      { title: 'ISO 27001 Info Security', href: '/management-system/iso-27001' },
-      { title: 'ISO 50001 Energy Management', href: '/management-system/iso-50001' },
-      { title: 'ISO 22000 Food Safety', href: '/management-system/iso-22000' },
-      { title: 'ISO 37001 Anti-Bribery', href: '/management-system/iso-37001' },
-      { title: 'ISO 13485 Medical Devices', href: '/medical-devices' }
+      { title: 'Overview', href: '/management-systems/' },
+      { title: 'ISO 9001 Quality', href: '/management-system/iso-9001/' },
+      { title: 'ISO 14001 Environment', href: '/management-system/iso-14001/' },
+      { title: 'ISO 45001 Occupational Safety', href: '/management-system/iso-45001/' },
+      { title: 'ISO 27001 Info Security', href: '/management-system/iso-27001/' },
+      { title: 'ISO 50001 Energy Management', href: '/management-system/iso-50001/' },
+      { title: 'ISO 22000 Food Safety', href: '/management-system/iso-22000/' },
+      { title: 'ISO 37001 Anti-Bribery', href: '/management-system/iso-37001/' },
+      { title: 'ISO 13485 Medical Devices', href: '/medical-devices/' }
     ]
   },
   {
     title: 'Sustainability',
-    href: '/sustainability',
+    href: '/sustainability/',
     children: [
-      { title: 'Overview', href: '/sustainability' },
-      { title: 'Aluminium Stewardship (ASI)', href: '/sustainability/asi' },
-      { title: 'CBAM Verification', href: '/sustainability/cbam-verification' },
-      { title: 'Carbon Footprint (ISO 14064)', href: '/sustainability/carbon-footprint' },
-      { title: 'Life Cycle Assessment (LCA)', href: '/sustainability/lca' },
-      { title: 'Environmental Product Declaration (EPD)', href: '/sustainability/epd' },
-      { title: 'Health Product Declaration (HPD)', href: '/sustainability/hpd' },
-      { title: 'BRSR Reporting', href: '/sustainability/brsr' }
+      { title: 'Overview', href: '/sustainability/' },
+      { title: 'Aluminium Stewardship (ASI)', href: '/sustainability/asi/' },
+      { title: 'CBAM Verification', href: '/sustainability/cbam-verification/' },
+      { title: 'Carbon Footprint (ISO 14064)', href: '/sustainability/carbon-footprint/' },
+      { title: 'Life Cycle Assessment (LCA)', href: '/sustainability/lca/' },
+      { title: 'Environmental Product Declaration (EPD)', href: '/sustainability/epd/' },
+      { title: 'Health Product Declaration (HPD)', href: '/sustainability/hpd/' },
+      { title: 'BRSR Reporting', href: '/sustainability/brsr/' }
     ]
   },
   {
     title: 'Training',
-    href: '/training',
+    href: '/training/',
     children: [
-      { title: 'Overview', href: '/training' },
-      { title: 'FoSTaC Food Safety Training', href: '/training/fostac' }
+      { title: 'Overview', href: '/training/' },
+      { title: 'FoSTaC Food Safety Training', href: '/training/fostac/' }
     ]
   },
-  { title: 'Accreditations', href: '/accreditations' },
-  { title: 'Certified Clients', href: '/certified-clients' },
-  { title: 'Contact Us', href: '/contact' }
+  { title: 'Accreditations', href: '/accreditations/' },
+  { title: 'Certified Clients', href: '/certified-clients/' },
+  { title: 'Contact Us', href: '/contact/' }
 ];
 
 export default function MobileNav() {

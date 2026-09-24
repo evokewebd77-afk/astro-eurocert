@@ -62,4 +62,38 @@
 /privacypolicy/  /privacy-policy/  301
 /privacypolicy  /privacy-policy/  301
 
-/*    /index.html   200
+# Deleted duplicate wrapper pages -> canonical page (single hop)
+/ce-marking/atex/  /atex/  301
+/ce-marking/atex  /atex/  301
+/ce-marking/cement/  /cement/  301
+/ce-marking/cement  /cement/  301
+/ce-marking/lifts/  /lifts/  301
+/ce-marking/lifts  /lifts/  301
+/ce-marking/lvd-emc/  /lvd-emc/  301
+/ce-marking/lvd-emc  /lvd-emc/  301
+/ce-marking/ped/  /ped/  301
+/ce-marking/ped  /ped/  301
+/ce-marking/pi-mark/  /pi-mark/  301
+/ce-marking/pi-mark  /pi-mark/  301
+/ce-marking/railway/  /railway/  301
+/ce-marking/railway  /railway/  301
+/ce-marking/reach/  /reach/  301
+/ce-marking/reach  /reach/  301
+/ce-marking/rohs/  /rohs/  301
+/ce-marking/rohs  /rohs/  301
+/ghp/  /food-certification/ghp/  301
+/ghp  /food-certification/ghp/  301
+/iso-22000/  /management-system/iso-22000/  301
+/iso-22000  /management-system/iso-22000/  301
+/iso-27001/  /management-system/iso-27001/  301
+/iso-27001  /management-system/iso-27001/  301
+/iso-28000/  /management-system/iso-28000/  301
+/iso-28000  /management-system/iso-28000/  301
+/iso-37001/  /management-system/iso-37001/  301
+/iso-37001  /management-system/iso-37001/  301
+/non-gmo-animal-feed/  /food-certification/non-gmo-animal-feed/  301
+/non-gmo-animal-feed  /food-certification/non-gmo-animal-feed/  301
+/management-system/iso-26000/  /social-audits/iso-26000/  301
+/management-system/iso-26000  /social-audits/iso-26000/  301
+
+/*  /404.html  404

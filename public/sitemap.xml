@@ -16,33 +16,6 @@
     <loc>https://www.eurocert.asia/ce-certification/</loc>
   </url>
   <url>
-    <loc>https://www.eurocert.asia/ce-marking/atex/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/cement/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/lifts/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/lvd-emc/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/ped/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/pi-mark/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/railway/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/reach/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ce-marking/rohs/</loc>
-  </url>
-  <url>
     <loc>https://www.eurocert.asia/cement/</loc>
   </url>
   <url>
@@ -56,15 +29,6 @@
   </url>
   <url>
     <loc>https://www.eurocert.asia/contact/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ctpat-forgot-password/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ctpat-login/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/ctpat-register/</loc>
   </url>
   <url>
     <loc>https://www.eurocert.asia/electrical-electronic-products/</loc>
@@ -157,25 +121,10 @@
     <loc>https://www.eurocert.asia/fssc-v6-transition/</loc>
   </url>
   <url>
-    <loc>https://www.eurocert.asia/ghp/</loc>
-  </url>
-  <url>
     <loc>https://www.eurocert.asia/grievance/</loc>
   </url>
   <url>
-    <loc>https://www.eurocert.asia/iso-22000/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/iso-27001/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/iso-28000/</loc>
-  </url>
-  <url>
     <loc>https://www.eurocert.asia/iso-37001-2025-certification/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/iso-37001/</loc>
   </url>
   <url>
     <loc>https://www.eurocert.asia/lifts/</loc>
@@ -217,7 +166,7 @@
     <loc>https://www.eurocert.asia/management-system/iso-22716/</loc>
   </url>
   <url>
-    <loc>https://www.eurocert.asia/management-system/iso-26000/</loc>
+    <loc>https://www.eurocert.asia/management-system/iso-27001/</loc>
   </url>
   <url>
     <loc>https://www.eurocert.asia/management-system/iso-27017/</loc>
@@ -260,9 +209,6 @@
   </url>
   <url>
     <loc>https://www.eurocert.asia/medical-devices/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/non-gmo-animal-feed/</loc>
   </url>
   <url>
     <loc>https://www.eurocert.asia/ped/</loc>
@@ -374,9 +320,6 @@
   </url>
   <url>
     <loc>https://www.eurocert.asia/sustainability/lca/</loc>
-  </url>
-  <url>
-    <loc>https://www.eurocert.asia/thank-you/</loc>
   </url>
   <url>
     <loc>https://www.eurocert.asia/training/</loc>

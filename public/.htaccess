@@ -246,5 +246,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
 RewriteRule ^(.+?)/?$ $1/index.html [L]
 
-ErrorDocument 404 /404/index.html
+ErrorDocument 404 /404.html
 
