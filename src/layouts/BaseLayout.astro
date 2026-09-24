@@ -2,7 +2,7 @@
 import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import FloatingActionButtons from '../components/FloatingActionButtons.jsx';
+import FloatingActionButtons from '../components/FloatingActionButtons.astro';
 import MobileNav from '../components/MobileNav.jsx';
 import EngagementDrawer from '../components/EngagementDrawer.astro';
 import SiteSearchModal from '../components/SiteSearchModal.astro';
@@ -94,11 +94,11 @@ const {
         <slot />
       </div>
       <Footer />
-    <FloatingActionButtons client:only="react" />
+    <FloatingActionButtons />
     </div>
 
-    <!-- React Islands -->
-    <MobileNav client:load />
+    <!-- React Islands (hydrate only on mobile viewports) -->
+    <MobileNav client:media="(max-width: 768px)" />
 
     <!-- Site search modal (vanilla JS, no hydration required) -->
     <SiteSearchModal />
@@ -106,7 +106,22 @@ const {
     <!-- Recent Posts / Contact Us drawer -->
     <EngagementDrawer />
 
-    <!-- SOPHIA Chatbot Widget -->
-    <script is:inline src="/sophia-widget.js" defer></script>
+    <!-- SOPHIA Chatbot Widget (loaded after idle so it does not block first paint/INP) -->
+    <script is:inline>
+      (function () {
+        function loadSophia() {
+          var s = document.createElement('script');
+          s.src = '/sophia-widget.js';
+          s.async = true;
+          s.defer = true;
+          document.body.appendChild(s);
+        }
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadSophia, { timeout: 4000 });
+        } else {
+          setTimeout(loadSophia, 4000);
+        }
+      })();
+    </script>
   </body>
 </html>
