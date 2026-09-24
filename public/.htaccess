@@ -188,6 +188,47 @@ RewriteRule ^ce-mark-certification-[a-z0-9-]+/?$ /ce-certification/ [R=301,L]
 RewriteRule ^ce-certificate-for-[a-z0-9-]+/?$ /ce-certification/ [R=301,L]
 RewriteRule ^ce-marking-[a-z0-9-]+/?$ /ce-certification/ [R=301,L]
 
+# ============================================================
+# User-requested redirects batch (2026-09-24) - SEO cleanup
+# Every old URL below 301s DIRECTLY to its final page (no chains)
+# ============================================================
+
+# Old blog post URLs -> clean /post/ slugs
+RewriteRule ^2017/02/sa-8000-certification/?$ /post/sa-8000-certification/ [R=301,L]
+RewriteRule ^2023/08/slcp-certification-slcp-eurocert-asia/?$ /post/slcp-certification/ [R=301,L]
+RewriteRule ^2019/12/c-tpat-compliance-vs-c-tpat-validation/?$ /post/ctpat-compliance-vs-validation/ [R=301,L]
+RewriteRule ^2019/12/c-tpat-the-new-minimum-security-criteria-from-cbp-for-manufacturers-and-exports/?$ /post/ctpat-minimum-security-criteria/ [R=301,L]
+
+# Old /social/ and /food/ legacy paths -> final section URLs (direct)
+RewriteRule ^smeta-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^code-of-conduct-audits/?$ /social-audits/code-of-conduct/ [R=301,L]
+RewriteRule ^rmiresponsible-minerals-initiative/?$ /social-audits/rmi/ [R=301,L]
+RewriteRule ^rmi-responsible-minerals-initiative/?$ /social-audits/rmi/ [R=301,L]
+RewriteRule ^haccp-2/?$ /food-certification/haccp/ [R=301,L]
+RewriteRule ^iso-22000-certification/?$ /food-certification/iso-22000/ [R=301,L]
+RewriteRule ^iso-3834-certification/?$ /management-system/iso-3834/ [R=301,L]
+
+# Old informational pages
+RewriteRule ^all-about-ce-mark-certification/?$ /ce-certification/ [R=301,L]
+RewriteRule ^privacypolicy/?$ /privacy-policy/ [R=301,L]
+
+# Deleted duplicate wrapper pages -> canonical page (single hop)
+RewriteRule ^ce-marking/atex/?$ /atex/ [R=301,L]
+RewriteRule ^ce-marking/cement/?$ /cement/ [R=301,L]
+RewriteRule ^ce-marking/lifts/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-marking/lvd-emc/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-marking/ped/?$ /ped/ [R=301,L]
+RewriteRule ^ce-marking/pi-mark/?$ /pi-mark/ [R=301,L]
+RewriteRule ^ce-marking/railway/?$ /railway/ [R=301,L]
+RewriteRule ^ce-marking/reach/?$ /reach/ [R=301,L]
+RewriteRule ^ce-marking/rohs/?$ /rohs/ [R=301,L]
+RewriteRule ^ghp/?$ /food-certification/ghp/ [R=301,L]
+RewriteRule ^iso-22000/?$ /management-system/iso-22000/ [R=301,L]
+RewriteRule ^iso-27001/?$ /management-system/iso-27001/ [R=301,L]
+RewriteRule ^iso-28000/?$ /management-system/iso-28000/ [R=301,L]
+RewriteRule ^iso-37001/?$ /management-system/iso-37001/ [R=301,L]
+RewriteRule ^non-gmo-animal-feed/?$ /food-certification/non-gmo-animal-feed/ [R=301,L]
+
 RewriteRule ^wp-login\.php$ / [R=301,L]
 
 # Serve existing files and folders as-is
