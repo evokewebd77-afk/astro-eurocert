@@ -32,6 +32,12 @@ DirectoryIndex index.html
 RewriteEngine On
 RewriteBase /
 
+# Single-hop canonicalization: any real directory requested without a trailing
+# slash gets a direct 301 to the HTTPS+www URL (kills http:// intermediate hops)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+?)$ https://www.eurocert.asia/$1/ [R=301,L]
+
 # ============================================================
 # ALL spreadsheet redirects (URL column → REDIRECT column)
 # ============================================================
@@ -86,9 +92,11 @@ RewriteRule ^ce-certificate-for-construction-products/?$ /construction-products/
 RewriteRule ^ce-certificate-construction-products/?$ /construction-products/ [R=301,L]
 RewriteRule ^ce-mark-certificate-construction-products/?$ /construction-products/ [R=301,L]
 RewriteRule ^ce-mark-certification-cranes/?$ /ce-certification/ [R=301,L]
-RewriteRule ^ce-mark-certification-control-panel/?$ /ce-certification/ [R=301,L]
-RewriteRule ^ce-mark-certification-control-panels/?$ /ce-certification/ [R=301,L]
-RewriteRule ^ce-mark-certification-motors/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-certification-control-panel/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-mark-certification-control-panels/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-mark-certification-motors/?$ /electrical-electronic-products/ [R=301,L]
+RewriteRule ^ce-mark-certification-low-voltage-switchgear-and-controlgear/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-certificate-for-machines-using-high-voltage/?$ /machinery/ [R=301,L]
 RewriteRule ^ce-mark-certification-for-conveyor-belts/?$ /ce-certification/ [R=301,L]
 RewriteRule ^ce-certificate-for-spray-guns/?$ /ce-certification/ [R=301,L]
 RewriteRule ^ce-mark-certification-pumps/?$ /ce-certification/ [R=301,L]

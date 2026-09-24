@@ -98,4 +98,32 @@
 /management-system/iso-22000/  /food-certification/iso-22000/  301
 /management-system/iso-22000  /food-certification/iso-22000/  301
 
+# GSC old WordPress / legacy URLs -> final canonical pages (direct 301)
+/globalgap/  /food-certification/globalgap/  301
+/globalgap  /food-certification/globalgap/  301
+/sedex-audit/  /social-audits/sedex/  301
+/sedex-audit  /social-audits/sedex/  301
+/sedex-audit-cost/  /social-audits/sedex/  301
+/sedex-audit-cost  /social-audits/sedex/  301
+/sedex-audit-smeta-audit-in-*  /social-audits/sedex/  301
+/sa-8000-certification-in-*  /social-audits/sa-8000/  301
+/home/  /  301
+/home  /  301
+/food/eu-organic/  /food-certification/eu-organic/  301
+/food/eu-organic  /food-certification/eu-organic/  301
+/food-certification/fostac/  /training/fostac/  301
+/food-certification/fostac  /training/fostac/  301
+/ce-mark-ce-certification/  /ce-certification/  301
+/ce-mark-ce-certification  /ce-certification/  301
+/ce-mark-certification-control-panels/  /lvd-emc/  301
+/ce-mark-certification-control-panels  /lvd-emc/  301
+/ce-mark-certification-low-voltage-switchgear-and-controlgear/  /lvd-emc/  301
+/ce-mark-certification-low-voltage-switchgear-and-controlgear  /lvd-emc/  301
+/ce-mark-certification-motors/  /electrical-electronic-products/  301
+/ce-mark-certification-motors  /electrical-electronic-products/  301
+/ce-certificate-for-machines-using-high-voltage/  /machinery/  301
+/ce-certificate-for-machines-using-high-voltage  /machinery/  301
+/ctpat-login  /ctpat-login/  301
+/ctpat-register  /ctpat-register/  301
+
 /*  /404.html  404

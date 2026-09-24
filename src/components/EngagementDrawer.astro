@@ -83,7 +83,7 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
         <div>
           <h4 class="heading-font text-[10px] text-eurogold-400 tracking-[0.35em] uppercase font-bold mb-2">Get in touch</h4>
           <p class="text-white/55 text-sm leading-relaxed">
-            Send a message â€“ our team usually replies within one business day. For full details and FAQs, visit <a href="/contact/" class="text-eurogold-400 hover:text-eurogold-300 underline underline-offset-2">the Contact page</a>.
+            Send a message Ã¢â‚¬â€œ our team usually replies within one business day. For full details and FAQs, visit <a href="/contact/" class="text-eurogold-400 hover:text-eurogold-300 underline underline-offset-2">the Contact page</a>.
           </p>
         </div>
         <div class="space-y-3 text-sm text-white/70">
@@ -235,7 +235,7 @@ const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', y
         .then(function (res) {
           var t = (res.text || '') + '';
           var ok = res.ok || res.status === 200 || t.indexOf('SUCCESS') > -1 || t.indexOf('success') > -1;
-          if (ok) { form.reset(); genCaptcha(); window.location.href = '/thank-you'; }
+          if (ok) { form.reset(); genCaptcha(); window.location.href = '/thank-you/'; }
           else { showStatus('Submission failed. Please try again.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); }
         })
         .catch(function () { showStatus('Something went wrong. Please try again later.'); btn.disabled = false; label.textContent = 'Send message'; genCaptcha(); });

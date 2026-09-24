@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   // 301 redirects (work in `astro dev` / `astro preview`; Apache production
   // uses public/.htaccess, Netlify uses public/_redirects — keep all 3 in sync)
   redirects: {
@@ -65,5 +65,29 @@ export default defineConfig({
     '/non-gmo-animal-feed': '/food-certification/non-gmo-animal-feed/',
     '/management-system/iso-26000': '/social-audits/iso-26000/',
     '/management-system/iso-22000': '/food-certification/iso-22000/',
+    '/globalgap': '/food-certification/globalgap/',
+    '/sedex-audit': '/social-audits/sedex/',
+    '/sedex-audit-cost': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-spain': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-jodhpur': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-europe': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-austria': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-chennai': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-bulgaria': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-saharanpur': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-tiruppur': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-ludhiana': '/social-audits/sedex/',
+    '/sedex-audit-smeta-audit-in-bhilwara': '/social-audits/sedex/',
+    '/sa-8000-certification-in-tiruppur': '/social-audits/sa-8000/',
+    '/home': '/',
+    '/food/eu-organic': '/food-certification/eu-organic/',
+    '/food-certification/fostac': '/training/fostac/',
+    '/ce-mark-ce-certification': '/ce-certification/',
+    '/ce-mark-certification-control-panels': '/lvd-emc/',
+    '/ce-mark-certification-low-voltage-switchgear-and-controlgear': '/lvd-emc/',
+    '/ce-mark-certification-motors': '/electrical-electronic-products/',
+    '/ce-certificate-for-machines-using-high-voltage': '/machinery/',
+    '/ctpat-login': '/ctpat-login/',
+    '/ctpat-register': '/ctpat-register/',
   },
 });
