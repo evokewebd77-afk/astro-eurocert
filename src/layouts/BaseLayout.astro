@@ -16,6 +16,7 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   keywords?: string;
+  heroImage?: string;
 }
 
 const {
@@ -23,7 +24,8 @@ const {
   description = "Eurocert Asia — inspection, certification, CE marking, management systems and food safety. Trusted partner for ISO, GFSI, social audits and sustainability.",
   canonicalUrl = "https://www.eurocert.asia/",
   ogImage = "https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367859/eurocert/Untitled_design_19_.png.png",
-  keywords = "Eurocert,Eurocert Asia,ISO certification,CE marking,food safety certification,FSSC 22000,BRCGS,GFSI,social audits,Sedex,SMETA,SA8000,inspection services,certification body,India,management systems,ISO 9001,ISO 14001,ISO 45001"
+  keywords = "Eurocert,Eurocert Asia,ISO certification,CE marking,food safety certification,FSSC 22000,BRCGS,GFSI,social audits,Sedex,SMETA,SA8000,inspection services,certification body,India,management systems,ISO 9001,ISO 14001,ISO 45001",
+  heroImage = "",
 } = Astro.props;
 ---
 
@@ -42,6 +44,7 @@ const {
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalUrl} />
+    {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -64,8 +67,9 @@ const {
     <link rel="icon" href="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782368070/eurocert/favicon.png.png" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782368070/eurocert/favicon.png.png" />
 
-    <!-- FontAwesome CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+    <!-- FontAwesome CDN (non-blocking: icons swap in via font-display:swap) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" /></noscript>
 
     <!-- Google Tag Manager -->
     <script is:inline>
@@ -106,20 +110,28 @@ const {
     <!-- Recent Posts / Contact Us drawer -->
     <EngagementDrawer />
 
-    <!-- SOPHIA Chatbot Widget (loaded after idle so it does not block first paint/INP) -->
+    <!-- SOPHIA Chatbot Widget: kept off the critical path. It loads after first
+         user interaction or after an 8s timeout, so it never delays LCP/INP. -->
     <script is:inline>
       (function () {
+        var loaded = false;
         function loadSophia() {
+          if (loaded) return;
+          loaded = true;
           var s = document.createElement('script');
           s.src = '/sophia-widget.js';
           s.async = true;
           s.defer = true;
           document.body.appendChild(s);
         }
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(loadSophia, { timeout: 4000 });
+        function armLoader() {
+          window.setTimeout(loadSophia, 8000);
+          window.addEventListener('pointerdown', loadSophia, { passive: true, once: true });
+        }
+        if (document.readyState === 'complete') {
+          armLoader();
         } else {
-          setTimeout(loadSophia, 4000);
+          window.addEventListener('load', armLoader);
         }
       })();
     </script>
