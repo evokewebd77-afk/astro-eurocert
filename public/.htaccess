@@ -229,6 +229,9 @@ RewriteRule ^iso-28000/?$ /management-system/iso-28000/ [R=301,L]
 RewriteRule ^iso-37001/?$ /management-system/iso-37001/ [R=301,L]
 RewriteRule ^non-gmo-animal-feed/?$ /food-certification/non-gmo-animal-feed/ [R=301,L]
 
+# Deleted duplicate management-system ISO 22000 page -> food-certification canonical
+RewriteRule ^management-system/iso-22000/?$ /food-certification/iso-22000/ [R=301,L]
+
 RewriteRule ^wp-login\.php$ / [R=301,L]
 
 # Serve existing files and folders as-is

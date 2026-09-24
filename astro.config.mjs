@@ -64,5 +64,6 @@ export default defineConfig({
     '/iso-37001': '/management-system/iso-37001/',
     '/non-gmo-animal-feed': '/food-certification/non-gmo-animal-feed/',
     '/management-system/iso-26000': '/social-audits/iso-26000/',
+    '/management-system/iso-22000': '/food-certification/iso-22000/',
   },
 });

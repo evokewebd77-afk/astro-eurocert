@@ -62,7 +62,7 @@ const MENU_ITEMS = [
       { title: 'ISO 45001 Occupational Safety', href: '/management-system/iso-45001/' },
       { title: 'ISO 27001 Info Security', href: '/management-system/iso-27001/' },
       { title: 'ISO 50001 Energy Management', href: '/management-system/iso-50001/' },
-      { title: 'ISO 22000 Food Safety', href: '/management-system/iso-22000/' },
+      { title: 'ISO 22000 Food Safety', href: '/food-certification/iso-22000/' },
       { title: 'ISO 37001 Anti-Bribery', href: '/management-system/iso-37001/' },
       { title: 'ISO 13485 Medical Devices', href: '/medical-devices/' }
     ]
