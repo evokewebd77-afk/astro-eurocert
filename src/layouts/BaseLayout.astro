@@ -101,8 +101,8 @@ const {
     <FloatingActionButtons />
     </div>
 
-    <!-- React Islands (hydrate only on mobile viewports) -->
-    <MobileNav client:media="(max-width: 768px)" />
+    <!-- React Islands (hydrate only when the hamburger is visible) -->
+    <MobileNav client:media="(max-width: 1023px)" />
 
     <!-- Site search modal (vanilla JS, no hydration required) -->
     <SiteSearchModal />
