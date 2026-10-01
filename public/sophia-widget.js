@@ -9,7 +9,7 @@
   var ROOT_ID = "sofia-root";
   var BACKDROP_ID = "sofia-popup-backdrop";
   var CARD_ID = "sofia-popup-card";
-  var SOFIA_VIDEO = '<video src="/sofia-video.mp4" poster="/sofia-portrait.png" autoplay loop muted playsinline preload="auto"></video>';
+  var SOFIA_VIDEO = '<video src="https://eurocert-chatbot-frontend.vercel.app/assets/sofiavideo-DXURDz3P.mp4" poster="/sofia-portrait.png" autoplay loop muted playsinline preload="auto"></video>';
   var wired = false;
   // mode: "centered" = hero modal, "docked" = bottom-right small, "closed" = launcher only
   var mode = "centered";
