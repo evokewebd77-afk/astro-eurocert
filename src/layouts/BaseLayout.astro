@@ -1,0 +1,125 @@
+---
+import TopBar from '../components/TopBar.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingActionButtons from '../components/FloatingActionButtons.astro';
+import MobileNav from '../components/MobileNav.jsx';
+import EngagementDrawer from '../components/EngagementDrawer.astro';
+import SiteSearchModal from '../components/SiteSearchModal.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  keywords?: string;
+  heroImage?: string;
+}
+
+const {
+  title = "EUROCERT | Inspection & Certification Services",
+  description = "Eurocert Asia — inspection, certification, CE marking, management systems and food safety. Trusted partner for ISO, GFSI, social audits and sustainability.",
+  canonicalUrl = "https://www.eurocert.asia/",
+  ogImage = "https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367859/eurocert/Untitled_design_19_.png.png",
+  keywords = "Eurocert,Eurocert Asia,ISO certification,CE marking,food safety certification,FSSC 22000,BRCGS,GFSI,social audits,Sedex,SMETA,SA8000,inspection services,certification body,India,management systems,ISO 9001,ISO 14001,ISO 45001",
+  heroImage = "",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="author" href="https://www.eurocert.asia" />
+    <meta name="author" content="Eurocert Inspection Services Private Limited" />
+    <meta name="creator" content="Eurocert Inspection Services Private Limited" />
+    <meta name="publisher" content="Eurocert Inspection Services Private Limited" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href={canonicalUrl} />
+    {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Eurocert" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Eurocert Inspection Services Private Limited" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Icons -->
+    <link rel="icon" href="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782368068/eurocert/favicon.ico.ico" sizes="any" />
+    <link rel="icon" href="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782368070/eurocert/favicon.png.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782368070/eurocert/favicon.png.png" />
+
+    <!-- FontAwesome CDN (non-blocking: icons swap in via font-display:swap) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" /></noscript>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-KBCG9T4M');
+    </script>
+    <ViewTransitions />
+  </head>
+  <body>
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBCG9T4M" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+    </noscript>
+
+    <div class="relative isolate min-h-[100dvh] w-full flex flex-col">
+      <TopBar />
+      <Header />
+      <div class="relative z-0 flex-1 flex flex-col min-h-0 w-full">
+        <slot />
+      </div>
+      <Footer />
+    <FloatingActionButtons />
+    </div>
+
+    <!-- React Islands (hydrate only when the hamburger is visible) -->
+    <MobileNav client:media="(max-width: 1023px)" />
+
+    <!-- Site search modal (vanilla JS, no hydration required) -->
+    <SiteSearchModal />
+
+    <!-- Recent Posts / Contact Us drawer -->
+    <EngagementDrawer />
+
+    <!-- SOFIA opens as a centered popup as soon as the page is ready. -->
+    <script is:inline>
+      (function () {
+        if (window.__sophiaLoaderArmed) return;
+        window.__sophiaLoaderArmed = true;
+        var s = document.createElement('script');
+        s.src = '/sophia-widget.js';
+        s.async = true;
+        document.body.appendChild(s);
+      })();
+    </script>
+  </body>
+</html>

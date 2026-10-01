@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" style="background:transparent;height:100%;margin:0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOFIA</title>
+    <style>
+      html, body, #root {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background: transparent !important;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body style="background:transparent;height:100%;margin:0">
+    <div id="root"></div>
+    <script type="module">
+      const ORIGIN = "https://eurocert-chatbot-frontend.vercel.app";
+      const forceOpen = new URLSearchParams(location.search).get("open") === "1";
+
+      function fail(error) {
+        window.parent?.postMessage({ source: "sofia-boot", type: "boot-error", message: String(error && error.message || error) }, "*");
+      }
+
+      try {
+        const html = await fetch(ORIGIN + "/", { cache: "no-cache" }).then(function (r) {
+          if (!r.ok) throw new Error("widget host " + r.status);
+          return r.text();
+        });
+        const cssPath = (html.match(/href="(\/assets\/[^"]+\.css)"/) || [])[1];
+        const jsPath = (html.match(/src="(\/assets\/[^"]+\.js)"/) || [])[1];
+        if (!jsPath) throw new Error("widget script missing");
+
+        if (cssPath) {
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = ORIGIN + cssPath;
+          document.head.appendChild(link);
+        }
+
+        let code = await fetch(ORIGIN + jsPath, { cache: "no-cache" }).then(function (r) {
+          if (!r.ok) throw new Error("widget script " + r.status);
+          return r.text();
+        });
+
+        if (forceOpen) {
+          // 1. Initialize outer widget in Open + Fullscreen (centered modal) mode
+          const target1 = "function Oe(){let[e,t]=(0,_.useState)(!1),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!1)";
+          const repl1 = "function Oe(){let[e,t]=(0,_.useState)(!0),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!0)";
+          code = code.replace(target1, repl1);
+
+          // 2. Initialize inner chat in Fullscreen/Active mode so header displays the Minimize/Compress icon
+          const target2 = "qe=(0,_.useRef)(null),Je=(0,_.useRef)([]),[Ye,Xe]=(0,_.useState)(!1)";
+          const repl2 = "qe=(0,_.useRef)(null),Je=(0,_.useRef)([]),[Ye,Xe]=(0,_.useState)(!0)";
+          code = code.replace(target2, repl2);
+
+          // Fallback if formatting differed
+          if (!code.includes("useState)(!0),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!0)")) {
+            code = code.replace(
+              "function Oe(){let[e,t]=(0,_.useState)(!1)",
+              "function Oe(){let[e,t]=(0,_.useState)(!0)"
+            );
+          }
+        }
+
+        code = code.replaceAll("/assets/", ORIGIN + "/assets/");
+
+        const script = document.createElement("script");
+        script.type = "module";
+        script.textContent = code;
+        document.body.appendChild(script);
+      } catch (error) {
+        fail(error);
+      }
+    </script>
+  </body>
+</html>
