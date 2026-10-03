@@ -11,13 +11,31 @@
   var CARD_ID = "sofia-popup-card";
   var SOFIA_VIDEO = '<video src="https://eurocert-chatbot-frontend.vercel.app/assets/sofiavideo-DXURDz3P.mp4" poster="/sofia-portrait.png" autoplay loop muted playsinline preload="auto"></video>';
   var wired = false;
+
+  function isHomePath(path) {
+    if (!path) return false;
+    var p = path;
+    if (p === "/") return true;
+    if (p === "/index.html") return true;
+    if (p.length > 1 && p.endsWith("/index.html")) return true;
+    if (p.endsWith("/") && p.length > 1) {
+      p = p.slice(0, -1);
+    }
+    if (p === "") return true;
+    return false;
+  }
+
+  var isHome = isHomePath(location.pathname);
   // mode: "centered" = hero modal, "docked" = bottom-right small, "closed" = launcher only
-  var mode = "centered";
+  var mode = isHome ? "closed" : "centered";
   var seenOpen = false;
-  var userClosed = false;
+  var userClosed = isHome ? true : false;
   var usedFallback = false;
   var autoStarted = false;
-  var autoOpenWanted = !window.__sofiaDidAutoOpen;
+  var autoOpenWanted = isHome ? false : !window.__sofiaDidAutoOpen;
+  if (isHome) {
+    window.__sofiaDidAutoOpen = true;
+  }
 
   /*
    * IMPORTANT: The iframe is NEVER moved between parents after initial placement.
@@ -283,28 +301,36 @@
     flattenChatChrome();
     bindInnerClose();
 
+    if (isHome && mode !== "docked" && mode !== "closed") {
+      mode = "closed";
+    }
+
     // ── CENTERED (Hero modal) ─────────────────────────────────────────────
     if (mode === "centered") {
-      if (root) root.classList.remove("sofia-docked");
-      var box = centerBox(vp);
-      if (backdrop) backdrop.style.display = "block";
-      if (stage) {
-        stage.classList.add("is-open");
-        stage.style.width = box.w + "px";
-        stage.style.height = box.h + "px";
-        stage.style.borderRadius = box.radius + "px";
-        stage.style.top = Math.round(box.cy) + "px";
-        stage.classList.toggle("sofia-typing", !!box.typing);
+      if (isHome) {
+        mode = "closed";
+      } else {
+        if (root) root.classList.remove("sofia-docked");
+        var box = centerBox(vp);
+        if (backdrop) backdrop.style.display = "block";
+        if (stage) {
+          stage.classList.add("is-open");
+          stage.style.width = box.w + "px";
+          stage.style.height = box.h + "px";
+          stage.style.borderRadius = box.radius + "px";
+          stage.style.top = Math.round(box.cy) + "px";
+          stage.classList.toggle("sofia-typing", !!box.typing);
+        }
+        if (card) card.style.display = seenOpen ? "none" : "flex";
+        if (launcher) launcher.classList.remove("is-on");
+        iframe.style.display = "block";
+        iframe.style.visibility = seenOpen ? "visible" : "hidden";
+        iframe.style.opacity = seenOpen ? "1" : "0";
+        liftFloats(box.h, 16);
+        if (document.body) document.body.classList.add("sofia-open");
+        document.documentElement.style.overflow = "hidden";
+        return;
       }
-      if (card) card.style.display = seenOpen ? "none" : "flex";
-      if (launcher) launcher.classList.remove("is-on");
-      iframe.style.display = "block";
-      iframe.style.visibility = seenOpen ? "visible" : "hidden";
-      iframe.style.opacity = seenOpen ? "1" : "0";
-      liftFloats(box.h, 16);
-      if (document.body) document.body.classList.add("sofia-open");
-      document.documentElement.style.overflow = "hidden";
-      return;
     }
 
     // ── DOCKED (Small bottom-right widget) ───────────────────────────────
@@ -480,9 +506,9 @@
       iframe.title = "SOFIA Chat";
       iframe.setAttribute("allow", "microphone");
       var src = BOOT;
-      if (autoOpenWanted && !autoStarted) src += "?open=1";
+      if (autoOpenWanted && !autoStarted && !isHome) src += "?open=1";
       autoStarted = true;
-      if (autoOpenWanted) window.__sofiaDidAutoOpen = true;
+      if (autoOpenWanted && !isHome) window.__sofiaDidAutoOpen = true;
       iframe.src = src;
       // Always place inside chat-slot so it never needs to move
       var slot = slotEl();

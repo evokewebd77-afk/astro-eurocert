@@ -19,7 +19,23 @@
     <div id="root"></div>
     <script type="module">
       const ORIGIN = "https://eurocert-chatbot-frontend.vercel.app";
-      const forceOpen = new URLSearchParams(location.search).get("open") === "1";
+
+      function parentIsHome() {
+        try {
+          var p = window.parent && window.parent.location && window.parent.location.pathname;
+          if (!p) return false;
+          if (p === "/" || p === "/index.html") return true;
+          if (p.length > 1 && p.endsWith("/index.html")) return true;
+          if (p.endsWith("/") && p.length > 1) {
+            p = p.slice(0, -1);
+          }
+          return p === "";
+        } catch (e) {
+          return false;
+        }
+      }
+
+      const forceOpen = new URLSearchParams(location.search).get("open") === "1" && !parentIsHome();
 
       function fail(error) {
         window.parent?.postMessage({ source: "sofia-boot", type: "boot-error", message: String(error && error.message || error) }, "*");
