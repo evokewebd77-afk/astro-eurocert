@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /thank-you/
+Disallow: /ctpat-login/
+Disallow: /ctpat-register/
+Disallow: /ctpat-forgot-password/
+Disallow: /grievance/
+
+Sitemap: https://www.eurocert.asia/sitemap.xml

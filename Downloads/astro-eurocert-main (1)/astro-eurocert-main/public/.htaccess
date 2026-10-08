@@ -1,0 +1,261 @@
+# Eurocert static site - Apache / cPanel / FileZilla hosting
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2?|webp|png|jpe?g|svg|mp4)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+RewriteEngine On
+RewriteBase /
+
+# Single-hop canonicalization: any real directory requested without a trailing
+# slash gets a direct 301 to the HTTPS+www URL (kills http:// intermediate hops)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+?)$ https://www.eurocert.asia/$1/ [R=301,L]
+
+# ============================================================
+# ALL spreadsheet redirects (URL column → REDIRECT column)
+# ============================================================
+
+RewriteRule ^rohs-certification-restriction-of-hazardous-substance/?$ /rohs/ [R=301,L]
+RewriteRule ^rohs-certification-restriction-of-hazardous-substances/?$ /rohs/ [R=301,L]
+RewriteRule ^iso-50001-certificate/?$ /management-system/iso-50001/ [R=301,L]
+RewriteRule ^iso-50001-certification/?$ /management-system/iso-50001/ [R=301,L]
+RewriteRule ^iso-45001-certificate/?$ /management-system/iso-45001/ [R=301,L]
+RewriteRule ^iso-45001-certification/?$ /management-system/iso-45001/ [R=301,L]
+RewriteRule ^iso-27001-certificate/?$ /management-system/iso-27001/ [R=301,L]
+RewriteRule ^iso-27001-certification/?$ /management-system/iso-27001/ [R=301,L]
+RewriteRule ^iso-9001-certificate/?$ /management-system/iso-9001/ [R=301,L]
+RewriteRule ^iso-9001-certification/?$ /management-system/iso-9001/ [R=301,L]
+RewriteRule ^iso-14001-certificate/?$ /management-system/iso-14001/ [R=301,L]
+RewriteRule ^iso-14001-certification/?$ /management-system/iso-14001/ [R=301,L]
+RewriteRule ^itca-iso-18788-certification/?$ /management-system/iso-18788/ [R=301,L]
+RewriteRule ^iso-sa-18788-certification/?$ /management-system/iso-18788/ [R=301,L]
+RewriteRule ^iso-18788-certification/?$ /management-system/iso-18788/ [R=301,L]
+RewriteRule ^iso-18788-certificate/?$ /management-system/iso-18788/ [R=301,L]
+RewriteRule ^environmental-product-declaration-iso-14020/?$ /management-system/iso-14001/ [R=301,L]
+RewriteRule ^environmental-product-declaration-iso-14025/?$ /management-system/iso-14001/ [R=301,L]
+RewriteRule ^gmp-certification/?$ /management-system/iso-22716/ [R=301,L]
+RewriteRule ^carbon-footprint/?$ /sustainability/carbon-footprint/ [R=301,L]
+RewriteRule ^atex-certification/?$ /atex/ [R=301,L]
+RewriteRule ^welder-qualification-testing-procedure/?$ /welder-qualifications/ [R=301,L]
+RewriteRule ^welder-qualifications-testing-procedure/?$ /welder-qualifications/ [R=301,L]
+RewriteRule ^welder-qualification/?$ /welder-qualifications/ [R=301,L]
+RewriteRule ^pressure-equipment/?$ /ped/ [R=301,L]
+RewriteRule ^ped-certificate/?$ /ped/ [R=301,L]
+RewriteRule ^ped-spv-tped/?$ /ped/ [R=301,L]
+RewriteRule ^welding-processes-and-techniques-for-railway-vehicles/?$ /railway/ [R=301,L]
+RewriteRule ^welding-process-and-techniques-for-railway-vehicles/?$ /railway/ [R=301,L]
+RewriteRule ^welding-process-and-technique-for-railway-vehicles/?$ /railway/ [R=301,L]
+RewriteRule ^en-15085-railway-vehicles-welding-certification/?$ /railway/ [R=301,L]
+RewriteRule ^ce-marking-machinery/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-mark-certification-for-building-construction-machinery/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-mark-certificate-for-building-construction-machinery/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-certificate-for-building-construction-machinery/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-certificate-food-processing-machinery/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-certificate-for-food-processing-machinery/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-mark-certification-agricultural-forestry-machines/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-mark-certification-for-lifting-equipment/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-mark-certificate-for-lifting-equipment/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-mark-certificate-for-lifting-equipments/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-certificate-for-lifting-equipment/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-certification-lifts/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-mark-certification-lifts/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-marking-for-cement/?$ /cement/ [R=301,L]
+RewriteRule ^ce-certificate-for-construction-product/?$ /construction-products/ [R=301,L]
+RewriteRule ^ce-certificate-for-construction-products/?$ /construction-products/ [R=301,L]
+RewriteRule ^ce-certificate-construction-products/?$ /construction-products/ [R=301,L]
+RewriteRule ^ce-mark-certificate-construction-products/?$ /construction-products/ [R=301,L]
+RewriteRule ^ce-mark-certification-cranes/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-certification-control-panel/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-mark-certification-control-panels/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-mark-certification-motors/?$ /electrical-electronic-products/ [R=301,L]
+RewriteRule ^ce-mark-certification-low-voltage-switchgear-and-controlgear/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-certificate-for-machines-using-high-voltage/?$ /machinery/ [R=301,L]
+RewriteRule ^ce-mark-certification-for-conveyor-belts/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-certificate-for-spray-guns/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-certification-pumps/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-certification-name/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-certification-names/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-ce-certification/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-mark-ce-certificate-aircraft-ground-support-equipment/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ifs/?$ /food-certification/ifs/ [R=301,L]
+RewriteRule ^ifu/?$ /food-certification/ [R=301,L]
+RewriteRule ^food-certification/ifu/?$ /food-certification/ [R=301,L]
+RewriteRule ^globalgap/?$ /food-certification/globalgap/ [R=301,L]
+RewriteRule ^non-gmo/?$ /food-certification/non-gmo-products/ [R=301,L]
+RewriteRule ^food-eu-organic/?$ /food-certification/eu-organic/ [R=301,L]
+RewriteRule ^food/eu-organic/?$ /food-certification/eu-organic/ [R=301,L]
+RewriteRule ^food/cu-organic/?$ /food-certification/eu-organic/ [R=301,L]
+RewriteRule ^fssc-22000-certificate/?$ /food-certification/fssc-22000/ [R=301,L]
+RewriteRule ^fssc-22000-certification/?$ /food-certification/fssc-22000/ [R=301,L]
+RewriteRule ^fssc-22000-v-6-transition/?$ /fssc-v6-transition/ [R=301,L]
+RewriteRule ^fssc-22000-v6-transition/?$ /fssc-v6-transition/ [R=301,L]
+RewriteRule ^fssc-training/?$ /fssc-v6-transition/ [R=301,L]
+RewriteRule ^food-certification/fssc-v6-transition/?$ /fssc-v6-transition/ [R=301,L]
+RewriteRule ^fostac-training/?$ /training/fostac/ [R=301,L]
+RewriteRule ^fostac/?$ /training/fostac/ [R=301,L]
+RewriteRule ^food-certification/fostac/?$ /training/fostac/ [R=301,L]
+RewriteRule ^sa-8000-certification/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certificate/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa8000-certification-in-india/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^how-to-get-sa-8000-certificate/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-cost/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-moradabad/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-mumbai/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-ahmedabad/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-kolkata/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-lucknow/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-jodhpur/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-noida/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-delhi/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sa-8000-certification-in-surat/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^slcp-and-sedex/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-certification/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex/register_for_sedex_webinar/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex/register-for-sedex-webinar/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^food-safety-internship-program/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^what-is-new-in-smeta-version-6-1/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-cost-and-benefits/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^major-pillar-for-sedex-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^major-pillars-for-sedex-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^major-differences-smeta-5-0-new-smeta-6-0-audits/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^smeta-audit-faq/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^buyer-use-sedex-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^buyers-use-sedex-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-cost/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-delhi/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-jaipur/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-ahmedabad/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-italy/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-india/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-greece/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^sedex/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^2019/11/sedex-self-assessment/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^tag/slcp-certification/?$ /social-audits/slcp/ [R=301,L]
+RewriteRule ^tag-slcp-certification/?$ /social-audits/slcp/ [R=301,L]
+RewriteRule ^slcp/?$ /social-audits/slcp/ [R=301,L]
+RewriteRule ^ngo-list/?$ /social-audits/ngo-list/ [R=301,L]
+RewriteRule ^ctpat/?$ /social-audits/ctpat/ [R=301,L]
+RewriteRule ^c-tpat/?$ /social-audits/ctpat/ [R=301,L]
+RewriteRule ^2019/12/ctpat-the-new-minimum-security-criteria-from-cbp-for-manufacturers/?$ /social-audits/ctpat/ [R=301,L]
+RewriteRule ^wrap-worldwide-responsible-accredited-production/?$ /social-audits/wrap/ [R=301,L]
+RewriteRule ^wrap/?$ /social-audits/wrap/ [R=301,L]
+RewriteRule ^home/?$ / [R=301,L]
+RewriteRule ^certification-services-in-india/?$ / [R=301,L]
+RewriteRule ^slides/dsfd/?$ / [R=301,L]
+RewriteRule ^payment/?$ /contact/ [R=301,L]
+RewriteRule ^our-associates/?$ / [R=301,L]
+
+# ============================================================
+# Legacy /food/ and /social/ URL structure fixes (SE Ranking 4XX)
+# ============================================================
+RewriteRule ^food/?$ /food-certification/ [R=301,L]
+RewriteRule ^food/haccp/?$ /food-certification/haccp/ [R=301,L]
+RewriteRule ^food/ifs/?$ /food-certification/ifs/ [R=301,L]
+RewriteRule ^food/fssc-22000/?$ /food-certification/fssc-22000/ [R=301,L]
+RewriteRule ^food/eu-organic/?$ /food-certification/eu-organic/ [R=301,L]
+RewriteRule ^food/(.+)$ /food-certification/$1 [R=301,L]
+RewriteRule ^social/?$ /social-audits/ [R=301,L]
+RewriteRule ^social/c-tpat/?$ /social-audits/ctpat/ [R=301,L]
+RewriteRule ^social/sa-8000/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^social/iso-26000/?$ /social-audits/iso-26000/ [R=301,L]
+RewriteRule ^social/(.+)$ /social-audits/$1 [R=301,L]
+RewriteRule ^management-system/iso-26000/?$ /social-audits/iso-26000/ [R=301,L]
+
+# Catch-alls for remaining city / CE variants
+RewriteRule ^sa-8000-certification-in-[a-z0-9-]+/?$ /social-audits/sa-8000/ [R=301,L]
+RewriteRule ^sedex-audit-smeta-audit-in-[a-z0-9-]+/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^ce-mark-certification-[a-z0-9-]+/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-certificate-for-[a-z0-9-]+/?$ /ce-certification/ [R=301,L]
+RewriteRule ^ce-marking-[a-z0-9-]+/?$ /ce-certification/ [R=301,L]
+
+# ============================================================
+# User-requested redirects batch (2026-09-24) - SEO cleanup
+# Every old URL below 301s DIRECTLY to its final page (no chains)
+# ============================================================
+
+# Old blog post URLs -> clean /post/ slugs
+RewriteRule ^2017/02/sa-8000-certification/?$ /post/sa-8000-certification/ [R=301,L]
+RewriteRule ^2023/08/slcp-certification-slcp-eurocert-asia/?$ /post/slcp-certification/ [R=301,L]
+RewriteRule ^2019/12/c-tpat-compliance-vs-c-tpat-validation/?$ /post/ctpat-compliance-vs-validation/ [R=301,L]
+RewriteRule ^2019/12/c-tpat-the-new-minimum-security-criteria-from-cbp-for-manufacturers-and-exports/?$ /post/ctpat-minimum-security-criteria/ [R=301,L]
+
+# Old /social/ and /food/ legacy paths -> final section URLs (direct)
+RewriteRule ^smeta-audit/?$ /social-audits/sedex/ [R=301,L]
+RewriteRule ^code-of-conduct-audits/?$ /social-audits/code-of-conduct/ [R=301,L]
+RewriteRule ^rmiresponsible-minerals-initiative/?$ /social-audits/rmi/ [R=301,L]
+RewriteRule ^rmi-responsible-minerals-initiative/?$ /social-audits/rmi/ [R=301,L]
+RewriteRule ^haccp-2/?$ /food-certification/haccp/ [R=301,L]
+RewriteRule ^iso-22000-certification/?$ /food-certification/iso-22000/ [R=301,L]
+RewriteRule ^iso-3834-certification/?$ /management-system/iso-3834/ [R=301,L]
+
+# Old informational pages
+RewriteRule ^all-about-ce-mark-certification/?$ /ce-certification/ [R=301,L]
+RewriteRule ^privacypolicy/?$ /privacy-policy/ [R=301,L]
+
+# Deleted duplicate wrapper pages -> canonical page (single hop)
+RewriteRule ^ce-marking/atex/?$ /atex/ [R=301,L]
+RewriteRule ^ce-marking/cement/?$ /cement/ [R=301,L]
+RewriteRule ^ce-marking/lifts/?$ /lifts/ [R=301,L]
+RewriteRule ^ce-marking/lvd-emc/?$ /lvd-emc/ [R=301,L]
+RewriteRule ^ce-marking/ped/?$ /ped/ [R=301,L]
+RewriteRule ^ce-marking/pi-mark/?$ /pi-mark/ [R=301,L]
+RewriteRule ^ce-marking/railway/?$ /railway/ [R=301,L]
+RewriteRule ^ce-marking/reach/?$ /reach/ [R=301,L]
+RewriteRule ^ce-marking/rohs/?$ /rohs/ [R=301,L]
+RewriteRule ^ghp/?$ /food-certification/ghp/ [R=301,L]
+RewriteRule ^iso-22000/?$ /management-system/iso-22000/ [R=301,L]
+RewriteRule ^iso-27001/?$ /management-system/iso-27001/ [R=301,L]
+RewriteRule ^iso-28000/?$ /management-system/iso-28000/ [R=301,L]
+RewriteRule ^iso-37001/?$ /management-system/iso-37001/ [R=301,L]
+RewriteRule ^non-gmo-animal-feed/?$ /food-certification/non-gmo-animal-feed/ [R=301,L]
+
+# Deleted duplicate management-system ISO 22000 page -> food-certification canonical
+RewriteRule ^management-system/iso-22000/?$ /food-certification/iso-22000/ [R=301,L]
+
+RewriteRule ^wp-login\.php$ / [R=301,L]
+
+# Serve existing files and folders as-is
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Serve folder index.html for clean URLs
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+# Fallback to route index.html (Next.js static export)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+?)/?$ $1/index.html [L]
+
+ErrorDocument 404 /404.html
+

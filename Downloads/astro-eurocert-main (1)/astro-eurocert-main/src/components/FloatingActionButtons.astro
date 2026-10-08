@@ -1,0 +1,75 @@
+---
+const isFostacPage = Astro.url.pathname.includes('/training/fostac');
+if (isFostacPage) {
+  return;
+}
+
+const phoneNum = "919316012883";
+const emailUrl = "mailto:info@eurocert.in?cc=eurocert.mv@gmail.com";
+const btnClass =
+  "w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#061226]/90 backdrop-blur-md border border-[#d8ad4c]/40 text-[#d8ad4c] hover:bg-[#d8ad4c] hover:text-[#030a16] shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:border-[#d8ad4c] hover:shadow-[0_0_25px_rgba(216,173,76,0.6)] flex items-center justify-center transition-all duration-300 group cursor-pointer";
+---
+
+<div
+  id="ec-fabs"
+  class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 transition-all duration-400 opacity-0 translate-y-6 pointer-events-none"
+>
+  <a
+    href={`tel:+${phoneNum}`}
+    class={btnClass}
+    aria-label="Call us (+91 9316012883)"
+    title="Call us: +91 9316012883"
+  >
+    <i class="fas fa-phone text-sm transition-transform group-hover:scale-110"></i>
+  </a>
+
+  <a
+    href={`https://wa.me/${phoneNum}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`hover:bg-[#25D366] hover:text-white hover:border-[#25D366] hover:shadow-[0_0_25px_rgba(37,211,102,0.6)] ${btnClass}`}
+    aria-label="Chat on WhatsApp"
+    title="Chat on WhatsApp"
+  >
+    <i class="fab fa-whatsapp text-lg transition-transform group-hover:scale-110"></i>
+  </a>
+
+  <a
+    href={emailUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`hover:bg-[#d8ad4c] hover:text-[#030a16] hover:shadow-[0_0_25px_rgba(216,173,76,0.6)] ${btnClass}`}
+    aria-label="Email Us"
+    title="Email Us: info@eurocert.in"
+  >
+    <i class="fas fa-envelope text-sm transition-transform group-hover:scale-110"></i>
+  </a>
+
+  <button
+    type="button"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    class={btnClass}
+    aria-label="Scroll to top"
+    title="Back to top"
+  >
+    <i class="fas fa-chevron-up text-sm transition-transform group-hover:-translate-y-0.5"></i>
+  </button>
+</div>
+
+<script>
+  if (!window.__ecFabsWired) {
+    window.__ecFabsWired = true;
+    function updateFabs() {
+      var el = document.getElementById('ec-fabs');
+      if (!el) return;
+      var show = window.scrollY > 200;
+      el.classList.toggle('opacity-100', show);
+      el.classList.toggle('translate-y-0', show);
+      el.classList.toggle('opacity-0', !show);
+      el.classList.toggle('translate-y-6', !show);
+      el.classList.toggle('pointer-events-none', !show);
+    }
+    updateFabs();
+    window.addEventListener('scroll', updateFabs, { passive: true });
+  }
+</script>

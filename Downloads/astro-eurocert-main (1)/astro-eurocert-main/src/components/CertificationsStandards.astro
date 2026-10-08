@@ -1,0 +1,80 @@
+---
+const row1 = [
+  "image copy -1.webp", "image copy 0.webp", "image copy 1.webp", "image copy 2.webp", "image copy 3.webp", "image copy 4.webp",
+  "image copy 5.webp", "image copy 6.webp", "image copy 7.webp", "image copy 8.webp", "image copy 9.webp", "image copy 10.webp"
+];
+
+const row2 = [
+  "image copy 11.webp", "image copy 12.webp", "image copy 13.webp", "image copy 14.webp", "image copy 15.webp", "image copy 16.webp",
+  "image copy 17.webp", "image copy 18.webp", "image copy 19.webp", "image copy 20.webp", "image copy 21.webp", "image copy 22.webp"
+];
+
+const row3 = [
+  "image copy 23.webp", "image copy 24.webp", "image copy 25.webp", "image copy 26.webp", "image copy 27.webp", "image copy 28.webp",
+  "image copy 29.webp", "image copy 30.webp", "image copy 31.webp", "image copy 32.webp", "image copy 33.webp"
+];
+
+const row1Duplicated = [...row1, ...row1];
+const row2Duplicated = [...row2, ...row2];
+const row3Duplicated = [...row3, ...row3];
+---
+
+<section id="certifications-standards" class="relative overflow-hidden bg-[#030a16]">
+  <div class="absolute inset-0 bg-[#030a16]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(212,168,67,0.06)_0%,transparent_60%)]"></div>
+
+  <div class="relative z-10 py-16 lg:py-20">
+    <div class="container mx-auto px-6 text-center mb-10">
+      <h4 class="heading-font text-[11px] text-eurogold-400 tracking-[0.5em] uppercase mb-3 font-bold">
+        Global Standards Spectrum
+      </h4>
+      <h2 class="heading-font text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
+        Certifications &amp; Standards
+      </h2>
+      <p class="text-white/50 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+        Internationally recognized certifications and standards we provide to help your business succeed globally.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Row 1: Left Marquee Slider -->
+      <div class="overflow-hidden relative py-2">
+        <div class="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#030a16] to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#030a16] to-transparent pointer-events-none"></div>
+        <div class="flex gap-6 items-center w-max animate-marquee-left" style="animation: marquee-left 40s linear infinite;">
+          {row1Duplicated.map((file, idx) => (
+            <div class="flex-shrink-0 w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center p-4 hover:shadow-[0_8px_30px_rgba(212,168,67,0.25)] hover:scale-105 hover:border-eurogold-400/30 transition-all duration-300 group cursor-pointer">
+              <img src={`/${file}`} alt="Certification Standard Logo" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300" width="112" height="112" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Row 2: Right Marquee Slider -->
+      <div class="overflow-hidden relative py-2">
+        <div class="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#030a16] to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#030a16] to-transparent pointer-events-none"></div>
+        <div class="flex gap-6 items-center w-max animate-marquee-right" style="animation: marquee-right 35s linear infinite;">
+          {row2Duplicated.map((file, idx) => (
+            <div class="flex-shrink-0 w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center p-4 hover:shadow-[0_8px_30px_rgba(212,168,67,0.25)] hover:scale-105 hover:border-eurogold-400/30 transition-all duration-300 group cursor-pointer">
+              <img src={`/${file}`} alt="Certification Standard Logo" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300" width="112" height="112" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Row 3: Left Marquee Slider -->
+      <div class="overflow-hidden relative py-2">
+        <div class="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#030a16] to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#030a16] to-transparent pointer-events-none"></div>
+        <div class="flex gap-6 items-center w-max animate-marquee-left-fast" style="animation: marquee-left 38s linear infinite;">
+          {row3Duplicated.map((file, idx) => (
+            <div class="flex-shrink-0 w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center p-4 hover:shadow-[0_8px_30px_rgba(212,168,67,0.25)] hover:scale-105 hover:border-eurogold-400/30 transition-all duration-300 group cursor-pointer">
+              <img src={`/${file}`} alt="Certification Standard Logo" class="max-w-full max-h-full object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300" width="112" height="112" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

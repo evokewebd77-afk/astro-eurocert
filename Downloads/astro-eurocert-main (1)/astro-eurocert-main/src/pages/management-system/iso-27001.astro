@@ -1,0 +1,812 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="ISO 27001 Certification | Eurocert"
+  description="Explore iso 27001 certification with Eurocert, including requirements, audit or assessment stages, documentation, certification support."
+  canonicalUrl="https://www.eurocert.asia/management-system/iso-27001/"
+  ogImage="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367859/eurocert/Untitled_design_19_.png.png"
+  keywords="Eurocert,Eurocert Asia,ISO certification,CE marking"
+>
+<style is:global>@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2) format('woff2')}@font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2) format('woff2')}@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2) format('woff2')}</style>
+<style is:global>:root {
+  --navy: #04122a;
+  --navy-2: #0a1f3d;
+  --gold: #d4a843;
+  --gold-2: #e6c05a;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --wrap: min(1140px, calc(100% - 32px));
+  --blue: #1d4ed8;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; max-width: 100%; }
+body { margin: 0; color: var(--ink); background: #fff; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; max-width: 100%; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+.is-wrap { width: var(--wrap); margin-inline: auto; max-width: 100%; }
+#iso27001-main { overflow-x: hidden; max-width: 100%; }
+#site-header { max-width: 100%; overflow-x: clip; }
+#site-header a { text-decoration: none; }
+#site-header .container { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1rem; }
+#site-header .logo-img { max-height: 56px; width: auto; }
+.is-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 22px; border-radius: 6px; font-weight: 800; font-size: 13px;
+  letter-spacing: .04em; text-transform: uppercase; text-decoration: none; border: 0; cursor: pointer;
+  max-width: 100%;
+}
+.is-btn-gold { background: var(--gold); color: #04122a; }
+.is-btn-gold:hover { background: var(--gold-2); }
+.is-btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.85); }
+.is-btn-outline:hover { background: rgba(255,255,255,.08); }
+.is-btn-outline-dark { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.55); }
+
+
+
+
+.is-hero {
+  position: relative; color: #fff; overflow: hidden;
+  background: #030a18;
+  padding: clamp(56px, 8vw, 100px) 0 clamp(48px, 6vw, 80px);
+  min-height: clamp(520px, 68vh, 680px);
+  display: flex;
+  align-items: center;
+}
+.is-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      #030a18 0%,
+      rgba(3,10,24,.95) 18%,
+      rgba(3,10,24,.7) 32%,
+      rgba(3,10,24,.25) 48%,
+      rgba(3,10,24,.05) 62%,
+      transparent 78%),
+    url('https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784347184/ChatGPT_Image_Jul_18_2026_09_28_08_AM_l4ayib.png') right center / cover no-repeat;
+  z-index: 0;
+}
+.is-hero .is-wrap {
+  width: min(1180px, calc(100% - 40px));
+  position: relative;
+  z-index: 1;
+}
+.is-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(16px, 3vw, 36px);
+  align-items: center;
+  width: 100%;
+}
+.is-hero-copy {
+  max-width: 33rem;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+.is-eyebrow {
+  display: inline-block; color: var(--gold); font-size: clamp(10px, 1.3vw, 11px); font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase; margin: 0 0 16px;
+}
+.is-hero h1 {
+  margin: 0 0 14px; font-size: clamp(2rem, 3.8vw, 3.35rem); line-height: 1.05; font-weight: 800;
+}
+.is-hero h2 {
+  margin: 0 0 18px; color: var(--gold); font-size: clamp(1.05rem, 1.9vw, 1.45rem); font-weight: 700; line-height: 1.35;
+}
+.is-hero .is-hero-text {
+  margin: 0 0 12px; max-width: 32rem; line-height: 1.7; opacity: .93;
+  font-size: clamp(13.5px, 1.15vw, 15px);
+}
+.is-hero .is-hero-text:last-of-type { margin-bottom: 26px; }
+.is-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.is-hero-visual {
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.is-hero-visual img {
+  width: min(100%, 540px);
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+  object-position: right center;
+  /* Avoid double-shield with banner bg: hide decorative duplicate on large screens */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.is-trust {
+  background: #fff;
+  border-bottom: 1px solid #eef2f7;
+  padding: 26px 0;
+}
+.is-trust-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 28px; }
+.is-trust-item {
+  display: flex; gap: 12px; align-items: center; min-width: 0;
+  font-size: 13.5px; font-weight: 700; color: #0f172a; line-height: 1.35;
+}
+.is-trust-item i {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #eef4ff; color: #2563eb; font-size: 15px;
+}
+
+.is-sec { padding: 72px 0; }
+.is-sec.alt { background: #f8fafc; }
+.is-title { margin: 0 0 14px; font-size: clamp(1.4rem, 2.5vw, 2.15rem); font-weight: 800; line-height: 1.2; color: var(--navy); }
+.is-lead { margin: 0 0 18px; color: var(--muted); line-height: 1.7; font-size: 15.5px; max-width: 38rem; }
+
+.is-why { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.35fr); gap: 48px; align-items: start; }
+.is-why .is-title { margin-bottom: 18px; }
+.is-why .is-lead { max-width: none; margin-bottom: 16px; color: #475569; font-size: 15px; }
+
+.is-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: 40px 48px;
+  align-items: start;
+}
+.is-overview .eyebrow {
+  margin: 0 0 8px; font-size: 11px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: #1d4ed8;
+}
+.is-overview .is-title { margin-bottom: 16px; }
+.is-overview .is-lead { max-width: none; margin-bottom: 14px; color: #64748b; font-size: 15px; }
+.is-overview-art {
+  width: 100%; border-radius: 16px; overflow: hidden;
+  border: 1px solid #e8eef5; background: #f8fafc;
+  box-shadow: 0 16px 40px rgba(15,23,42,.08);
+}
+.is-overview-art img {
+  display: block; width: 100%; height: auto;
+}
+.is-benefit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.is-benefit {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px 14px; align-items: start;
+  background: #fff; border: 1px solid #e8eef5; border-radius: 14px; padding: 18px 16px;
+  box-shadow: 0 6px 18px rgba(15,23,42,.04); min-width: 0;
+}
+.is-benefit i {
+  width: 40px; height: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;
+  background: #eef4ff; color: #2563eb; font-size: 17px; grid-row: 1 / span 2;
+}
+.is-benefit h3 { margin: 0; font-size: 15px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+.is-benefit p { margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.55; }
+
+.is-services { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.is-svc {
+  background: #fff; border: 1px solid #e8eef5; border-radius: 14px; padding: 22px 18px;
+  display: flex; flex-direction: column; gap: 10px; min-height: 100%; min-width: 0;
+  box-shadow: 0 8px 24px rgba(15,23,42,.05);
+}
+.is-svc i {
+  width: 44px; height: 44px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
+  background: #eef4ff; color: #2563eb; font-size: 18px;
+}
+.is-svc h3 { margin: 0; font-size: 15px; font-weight: 800; color: var(--navy); }
+.is-svc p { margin: 0; font-size: 13.5px; color: #64748b; line-height: 1.55; flex: 1; }
+.is-svc a { color: var(--gold); font-weight: 800; font-size: 13px; text-decoration: none; margin-top: 4px; }
+.is-svc a:hover { text-decoration: underline; }
+
+.is-vs {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; align-items: stretch;
+  position: relative; margin-top: 40px;
+}
+.is-stage { border-radius: 16px; padding: 28px 26px 24px; min-width: 0; border: 1px solid transparent; }
+.is-stage.s1 { grid-column: 1; background: #eef5ff; border-color: #dbeafe; border-radius: 16px 0 0 16px; padding-right: 36px; }
+.is-stage.s2 { grid-column: 2; background: #fff8eb; border-color: #fdecc8; border-radius: 0 16px 16px 0; padding-left: 36px; }
+.is-stage h3 { margin: 0 0 6px; font-size: 1.35rem; font-weight: 800; color: #0b3a7a; }
+.is-stage.s2 h3 { color: #b45309; }
+.is-stage .tag { margin: 0 0 18px; font-size: 14px; font-weight: 600; color: #3b82f6; }
+.is-stage.s2 .tag { color: #d97706; }
+.is-stage ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.is-stage li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.45; color: #1e293b; }
+.is-stage li i { color: #2563eb; margin-top: 3px; flex-shrink: 0; font-size: 13px; }
+.is-stage.s2 li i { color: #d97706; }
+.is-stage .out {
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(15,23,42,.08);
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 13.5px; line-height: 1.5; color: #334155;
+}
+.is-stage .out .ico {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #2563eb; color: #fff; font-size: 14px;
+}
+.is-stage.s2 .out .ico { background: #d97706; }
+.is-vs-badge {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  z-index: 2; width: 54px; height: 54px; border-radius: 50%;
+  background: #0b1f3a; color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 14px; letter-spacing: .04em;
+  box-shadow: 0 10px 28px rgba(4,18,42,.28); border: 3px solid #fff;
+}
+
+.is-process {
+  display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 10px 6px;
+  position: relative;
+}
+.is-step {
+  text-align: center; padding-top: 8px; min-width: 0; position: relative; z-index: 1;
+}
+.is-step .num {
+  width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 12px;
+  background: #0b2a4a; color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; position: relative; z-index: 2;
+  box-shadow: 0 0 0 6px #fff;
+}
+.is-step:not(:last-child)::after {
+  content: "";
+  position: absolute; top: 33px; left: calc(50% + 30px); right: calc(-50% + 22px);
+  border-top: 2px dashed #c5d0de; z-index: 0; pointer-events: none;
+}
+.is-step p { margin: 0; font-size: 12.5px; font-weight: 700; color: #1e293b; line-height: 1.35; }
+
+.is-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: start; }
+.is-orgs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 12px; }
+.is-org {
+  background: transparent; border: 0; border-radius: 0; padding: 4px 6px;
+  text-align: center; font-size: 12.5px; font-weight: 700; color: #1e3a5f; line-height: 1.35; min-width: 0;
+}
+.is-org i { display: block; color: #1d4ed8; font-size: 22px; margin-bottom: 8px; }
+.is-why-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.is-why-list li {
+  display: flex; gap: 14px; align-items: flex-start; background: transparent;
+  border: 0; border-radius: 0; padding: 0;
+  font-size: 14.5px; font-weight: 400; color: #1e293b; line-height: 1.45; min-width: 0;
+}
+.is-why-list li i {
+  width: 28px; height: 28px; border-radius: 50%; background: #0b2a4a; color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; margin-top: 2px;
+}
+.is-why-list li strong { display: block; font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 2px; }
+.is-why-list li span { display: block; font-size: 13.5px; color: #64748b; line-height: 1.5; }
+
+.is-impartial {
+  background: #010b20;
+  color: #fff;
+  padding: 28px 0;
+  overflow: hidden;
+  width: 100%;
+}
+.is-impartial > .is-wrap {
+  width: min(1320px, calc(100% - 40px));
+}
+.is-duo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0;
+  align-items: center;
+  min-height: 0;
+}
+.is-card-dark {
+  position: relative;
+  overflow: visible;
+  padding: 0;
+  min-width: 0;
+  background: transparent;
+  border-radius: 0;
+  min-height: 0;
+}
+.is-card-dark.s-left {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding-right: 32px;
+}
+.is-card-dark.s-left .shield-ico {
+  width: 34px; height: 34px; margin-top: 0;
+  color: #fff; font-size: 28px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.is-card-dark.s-right {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 12px 18px;
+  align-items: center;
+  border-left: 1px solid rgba(255,255,255,.2);
+  padding: 0 0 0 32px;
+  min-height: 0;
+  overflow: visible;
+}
+.is-card-dark h3 {
+  margin: 0 0 6px; font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 800;
+  color: #fff; position: relative; z-index: 2; line-height: 1.2;
+}
+.is-card-dark p {
+  margin: 0; color: rgba(226,232,240,.88); line-height: 1.45;
+  font-size: 12.5px; position: relative; z-index: 2; max-width: none;
+}
+.is-card-dark .is-cost-copy { position: relative; z-index: 2; max-width: none; }
+.is-card-dark .is-cost-copy .is-btn {
+  display: inline-flex; margin-top: 10px; position: relative; z-index: 2;
+  text-transform: uppercase; letter-spacing: .04em; font-size: 11px;
+  padding: 10px 14px; border-radius: 3px;
+  background: #dda62c; color: #0a1628; font-weight: 800;
+  box-shadow: none;
+}
+.is-card-dark .is-cost-copy .is-btn:hover { background: #e8b53a; }
+.is-card-dark .art {
+  position: relative;
+  right: auto;
+  top: auto;
+  transform: none;
+  width: 150px;
+  max-width: 100%;
+  height: 110px;
+  display: block;
+  margin: 0;
+  object-fit: contain;
+  object-position: center right;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 18px rgba(0, 200, 255, .3));
+  justify-self: end;
+  align-self: center;
+}
+
+.is-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  align-items: start;
+}
+.is-faq {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  min-width: 0;
+  box-shadow: 0 1px 2px rgba(15,23,42,.03);
+}
+.is-faq summary {
+  list-style: none; cursor: pointer; padding: 16px 18px; font-weight: 700; font-size: 14.5px; color: var(--navy);
+  display: flex; justify-content: space-between; gap: 12px; align-items: center;
+}
+.is-faq summary::-webkit-details-marker { display: none; }
+.is-faq summary i { color: #94a3b8; transition: transform .2s; flex-shrink: 0; font-size: 12px; }
+.is-faq[open] summary i { transform: rotate(180deg); }
+.is-faq .ans { padding: 0 18px 16px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+.is-cta {
+  position: relative; overflow: hidden; color: #fff;
+  background:
+    linear-gradient(95deg, rgba(1,10,28,.35) 0%, rgba(1,10,28,.55) 28%, rgba(1,10,28,.82) 58%, rgba(1,10,28,.92) 100%),
+    url('https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784347183/ChatGPT_Image_Jul_14_2026_04_43_37_PM_eh4syo.png') left center / auto 175% no-repeat,
+    #010b1c;
+  padding: 40px 0;
+  width: 100%;
+}
+.is-cta > .is-wrap {
+  width: min(1440px, calc(100% - 32px));
+  position: relative;
+  z-index: 1;
+}
+.is-cta-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(240px, 1fr);
+  gap: 28px 40px;
+  align-items: center;
+  width: 100%;
+  padding-left: min(18%, 220px);
+}
+.is-cta-visual { display: none; }
+.is-cta-copy { min-width: 0; }
+.is-cta h2 {
+  margin: 0 0 8px; font-size: clamp(1.2rem, 2.1vw, 1.65rem); font-weight: 800; line-height: 1.25;
+}
+.is-cta p {
+  margin: 0 0 14px; opacity: .88; line-height: 1.55; max-width: none; font-size: 14px;
+}
+.is-cta-actions { display: flex; flex-wrap: nowrap; gap: 10px; }
+.is-cta-actions .is-btn {
+  text-transform: uppercase; letter-spacing: .03em; font-size: 11px;
+  padding: 11px 16px; white-space: nowrap;
+}
+.is-contact-box {
+  background: transparent; border: 0;
+  border-left: 1px solid rgba(255,255,255,.22);
+  border-radius: 0; padding: 4px 0 4px 28px; min-width: 0;
+  display: grid; gap: 14px;
+  align-content: center;
+}
+.is-contact-box h3 { display: none; }
+.is-contact-box a {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: center;
+  color: #fff; text-decoration: none; padding: 0; font-size: 13px; word-break: break-word;
+}
+.is-contact-box a:hover { color: var(--gold); }
+.is-contact-box .ci {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #fff; color: #0b2a4a;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; flex-shrink: 0;
+}
+.is-contact-box .clabel { display: block; font-size: 11px; opacity: .72; margin-bottom: 1px; }
+.is-contact-box .cval { display: block; font-weight: 700; font-size: 13.5px; line-height: 1.25; }
+
+.is-related { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.is-rel {
+  border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff;
+  text-decoration: none; color: inherit; min-width: 0;
+}
+.is-rel:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,23,42,.1); }
+.is-rel img { width: 100%; height: 150px; object-fit: cover; }
+.is-rel .body { padding: 16px 16px 18px; }
+.is-rel h3 { margin: 0 0 6px; font-size: 16px; font-weight: 800; color: var(--navy); }
+.is-rel p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+@media (min-width: 1400px) {
+  .is-hero .is-wrap { width: min(1280px, calc(100% - 64px)); }
+  .is-hero { min-height: 640px; }
+  .is-hero-copy { max-width: 34rem; }
+}
+@media (max-width: 1100px) {
+  .is-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .is-process { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .is-step:not(:last-child)::after { display: none; }
+}
+@media (max-width: 1024px) {
+  .is-why, .is-split, .is-duo, .is-overview { grid-template-columns: 1fr; }
+  .is-cta-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(200px, 1fr);
+    gap: 18px 24px;
+    padding-left: min(12%, 120px);
+  }
+  .is-cta-actions { flex-wrap: wrap; }
+  .is-contact-box { padding-left: 18px; gap: 12px; }
+  .is-card-dark.s-left { padding-right: 0; align-items: start; }
+  .is-card-dark.s-right {
+    grid-template-columns: minmax(0, 1fr) 130px;
+    border-left: 0; border-top: 1px solid rgba(255,255,255,.18);
+    padding: 20px 0 0; margin-top: 16px;
+  }
+  .is-card-dark .art { width: 130px; height: 96px; }
+  .is-impartial { padding: 24px 0; }
+  .is-impartial > .is-wrap { width: min(1140px, calc(100% - 28px)); }
+  .is-trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .is-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .is-vs { grid-template-columns: 1fr; gap: 16px; }
+  .is-stage.s1, .is-stage.s2 { grid-column: 1; border-radius: 16px; padding: 24px; }
+  .is-vs-badge { position: relative; left: auto; top: auto; transform: none; margin: -8px auto; order: 0; }
+  .is-stage.s1 { order: -1; }
+  .is-stage.s2 { order: 1; }
+  .is-process { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .is-orgs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .is-hero {
+    min-height: 0;
+    display: block;
+    padding: 48px 0 44px;
+  }
+  .is-hero-grid { grid-template-columns: 1fr; }
+  .is-hero-copy { max-width: none; }
+  .is-hero-visual { display: none; }
+  .is-hero::before {
+    background:
+      linear-gradient(180deg, rgba(3,10,24,.78) 0%, rgba(3,10,24,.72) 42%, rgba(3,10,24,.88) 100%),
+      url('https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784347184/ChatGPT_Image_Jul_18_2026_09_28_08_AM_l4ayib.png') center center / cover no-repeat;
+  }
+}
+@media (max-width: 720px) {
+  :root { --wrap: min(1140px, calc(100% - 24px)); }
+  .is-sec { padding: 44px 0; }
+  .is-trust { padding: 18px 0; }
+  .is-trust-grid,
+  .is-benefit-grid,
+  .is-faq-grid,
+  .is-related,
+  .is-services { grid-template-columns: 1fr; }
+  .is-process, .is-orgs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .is-hero { padding: 40px 0 36px; min-height: 420px; }
+  .is-hero-copy { max-width: none; }
+  .is-hero h1 { font-size: 1.7rem; }
+  .is-hero h2 { font-size: 1.05rem; }
+  .is-hero .is-hero-text { font-size: 14.5px; }
+  .is-hero::before {
+    background:
+      linear-gradient(180deg, rgba(3,10,24,.74) 0%, rgba(3,10,24,.68) 40%, rgba(3,10,24,.86) 100%),
+      url('https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784347184/ChatGPT_Image_Jul_18_2026_09_28_08_AM_l4ayib.png') center center / cover no-repeat;
+  }
+  .is-hero-actions, .is-cta-actions { flex-direction: column; align-items: stretch; }
+  .is-hero-actions .is-btn, .is-cta-actions .is-btn, .is-card-dark .is-btn { width: 100%; justify-content: center; }
+  .is-stage { padding: 22px 18px; }
+  .is-card-dark.s-right { grid-template-columns: 1fr; }
+  .is-card-dark .art { width: 140px; height: 100px; margin: 8px auto 0; }
+  .is-cta-grid { grid-template-columns: 1fr; padding-left: 0; }
+  .is-contact-box { border-left: 0; border-top: 1px solid rgba(255,255,255,.2); padding: 18px 0 0; }
+  .is-cta { padding: 28px 0; }
+  .is-cta {
+    background:
+      linear-gradient(180deg, rgba(1,10,28,.45) 0%, rgba(1,10,28,.78) 50%, rgba(1,10,28,.92) 100%),
+      url('https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784347183/ChatGPT_Image_Jul_14_2026_04_43_37_PM_eh4syo.png') center top / cover no-repeat,
+      #010b1c;
+  }
+  #site-header .logo-img { max-height: 44px; }
+}
+@media (max-width: 480px) {
+  :root { --wrap: min(1140px, calc(100% - 20px)); }
+  .is-trust-grid, .is-process, .is-orgs { grid-template-columns: 1fr; }
+  .is-hero h1 { font-size: 1.5rem; }
+  .is-btn { padding: 13px 16px; font-size: 12px; }
+  .is-hero { min-height: 380px; }
+}</style>
+
+
+
+<script>
+(function(){
+  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var menu = document.getElementById('ec-mobile-menu');
+    var openBtn = document.getElementById('ec-mobile-open');
+    var closeBtn = document.getElementById('ec-mobile-close');
+    if(!menu || !openBtn) return;
+    var isOpen = false;
+    function show(){
+      isOpen = true;
+      menu.style.display = 'flex';
+      openBtn.setAttribute('aria-expanded', 'true');
+    }
+    function hide(){
+      isOpen = false;
+      menu.style.display = 'none';
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+    function toggle(e){
+      if(e){ e.preventDefault(); e.stopPropagation(); }
+      if(isOpen) hide(); else show();
+    }
+    openBtn.addEventListener('click', toggle);
+    if(closeBtn) closeBtn.addEventListener('click', function(e){ e.preventDefault(); hide(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && isOpen) hide(); });
+    var links = menu.querySelectorAll('a');
+    for(var i=0;i<links.length;i++){
+      links[i].addEventListener('click', function(){ hide(); });
+    }
+  });
+})();
+</script>
+
+<main id="iso27001-main">
+  <section class="is-hero" aria-label="ISO/IEC 27001 Certification hero">
+    <div class="is-wrap is-hero-grid">
+      <div class="is-hero-copy">
+        <p class="is-eyebrow">Information Security Management System Certification</p>
+        <h1>ISO/IEC 27001 Certification</h1>
+        <h2>Demonstrate Your Commitment to Information Security</h2>
+        <p class="is-hero-text">Achieve independent certification of your Information Security Management System (ISMS) and demonstrate conformity with the requirements of ISO/IEC 27001.</p>
+        <p class="is-hero-text">Our transparent and impartial certification process helps you build confidence with customers, regulators, partners, and stakeholders.</p>
+        <div class="is-hero-actions">
+          <a class="is-btn is-btn-gold" href="/contact/">Request a Certification Proposal</a>
+          <a class="is-btn is-btn-outline" href="tel:+919316012883">Speak to Our Team</a>
+        </div>
+      </div>
+      <div class="is-hero-visual">
+        <img src="https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784347184/ChatGPT_Image_Jul_18_2026_09_28_08_AM_l4ayib.png" alt="ISO/IEC 27001 information security shield" width="900" height="700" fetchpriority="high" decoding="async"/>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-trust">
+    <div class="is-wrap is-trust-grid">
+      <div class="is-trust-item"><i class="fas fa-shield-halved"></i><span>Independent and Impartial Audits</span></div>
+      <div class="is-trust-item"><i class="fas fa-users"></i><span>Experienced Information Security Auditors</span></div>
+      <div class="is-trust-item"><i class="fas fa-clipboard-list"></i><span>Transparent Certification Process</span></div>
+      <div class="is-trust-item"><i class="fas fa-globe"></i><span>Certification Services for Multiple Industries</span></div>
+    </div>
+  </section>
+
+  <section class="is-sec">
+    <div class="is-wrap is-overview">
+      <div>
+        <p class="eyebrow">Standard Overview</p>
+        <h2 class="is-title">What is ISO 27001?</h2>
+        <p class="is-lead">International Organization for Standardization ISO 27001 is an internationally recognized standard for managing information security. It provides a structured framework for protecting sensitive company information through a risk-based approach.</p>
+        <p class="is-lead">The standard is built on the Plan-Do-Check-Act (PDCA) model, ensuring continuous improvement of your Information Security Management System (ISMS). It applies to all organizations, regardless of size, industry, or complexity.</p>
+      </div>
+      <figure class="is-overview-art">
+        <img src="https://res.cloudinary.com/didtfhfme/image/upload/f_auto,q_auto:good,w_1600/v1784004214/iso_b7symk.png" alt="ISO 27001 information security management system overview" width="1200" height="800" loading="lazy" decoding="async"/>
+      </figure>
+    </div>
+  </section>
+
+  <section class="is-sec alt">
+    <div class="is-wrap is-why">
+      <div>
+        <h2 class="is-title">Why ISO/IEC 27001 Certification?</h2>
+        <p class="is-lead">Information security is a critical business requirement in today's digital environment. ISO/IEC 27001 provides a systematic framework for establishing, implementing, maintaining and continually improving an Information Security Management System.</p>
+        <p class="is-lead">Independent certification demonstrates that your organization has established a structured approach to identifying information security risks, applying appropriate controls and evaluating the effectiveness of its ISMS.</p>
+      </div>
+      <div class="is-benefit-grid">
+        <div class="is-benefit"><i class="fas fa-shield-halved" aria-hidden="true"></i><h3>Build Customer Confidence</h3><p>Demonstrate that information security risks are managed through a structured system.</p></div>
+        <div class="is-benefit"><i class="fas fa-landmark" aria-hidden="true"></i><h3>Strengthen Governance</h3><p>Improve accountability, oversight and decision-making related to information security.</p></div>
+        <div class="is-benefit"><i class="fas fa-handshake" aria-hidden="true"></i><h3>Support Contractual Needs</h3><p>Provide independent evidence of conformity when required by customers or contracts.</p></div>
+        <div class="is-benefit"><i class="fas fa-chart-line" aria-hidden="true"></i><h3>Improve Market Credibility</h3><p>Strengthen your position in tenders, procurement and supplier evaluations.</p></div>
+        <div class="is-benefit"><i class="fas fa-crosshairs" aria-hidden="true"></i><h3>Effective Risk Management</h3><p>Identify, assess, treat and monitor information security risks in a systematic manner.</p></div>
+        <div class="is-benefit"><i class="fas fa-arrows-rotate" aria-hidden="true"></i><h3>Drive Continual Improvement</h3><p>Use audits, performance reviews and corrective actions to continually improve the ISMS.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-sec">
+    <div class="is-wrap">
+      <h2 class="is-title" style="text-align:center;margin-bottom:28px">Our ISO/IEC 27001 Certification Services</h2>
+      <div class="is-services">
+        <div class="is-svc"><i class="fas fa-file-circle-check" aria-hidden="true"></i><h3>Initial Certification</h3><p>Comprehensive assessment of your ISMS against ISO/IEC 27001 requirements.</p><a href="/contact/">Learn More</a></div>
+        <div class="is-svc"><i class="fas fa-magnifying-glass" aria-hidden="true"></i><h3>Surveillance Audits</h3><p>Periodic audits to verify that your ISMS continues to operate effectively and remains compliant.</p><a href="/contact/">Learn More</a></div>
+        <div class="is-svc"><i class="fas fa-calendar-check" aria-hidden="true"></i><h3>Recertification Audits</h3><p>Audits at the end of the certification cycle to confirm ongoing conformity and effectiveness.</p><a href="/contact/">Learn More</a></div>
+        <div class="is-svc"><i class="fas fa-right-left" aria-hidden="true"></i><h3>Transfer of Certification</h3><p>Transfer your existing certificate from another accredited certification body to EUROCERT.</p><a href="/contact/">Learn More</a></div>
+        <div class="is-svc"><i class="fas fa-city" aria-hidden="true"></i><h3>Multi-site Certification</h3><p>Certification for organizations operating from multiple locations under one ISMS.</p><a href="/contact/">Learn More</a></div>
+      </div>
+
+      <div class="is-vs">
+        <div class="is-stage s1">
+          <h3>Stage 1 Audit</h3>
+          <p class="tag">Readiness and Documented Information</p>
+          <ul>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>ISMS documentation and scope</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Organizational context</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Risk management approach</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Internal audit and management review</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Legal and contractual requirements</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Organizational readiness</span></li>
+          </ul>
+          <div class="out"><span class="ico" aria-hidden="true"><i class="fas fa-certificate"></i></span><div><strong>Outcome:</strong> Determination of readiness for the Stage 2 audit</div></div>
+        </div>
+        <div class="is-stage s2">
+          <h3>Stage 2 Audit</h3>
+          <p class="tag">Implementation and Effectiveness</p>
+          <ul>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Implementation of information security controls</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Operational effectiveness</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Monitoring and performance evaluation</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Nonconformities and corrective actions</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Continual improvement</span></li>
+            <li><i class="fas fa-check" aria-hidden="true"></i><span>Compliance with ISO/IEC 27001 requirements</span></li>
+          </ul>
+          <div class="out"><span class="ico" aria-hidden="true"><i class="fas fa-certificate"></i></span><div><strong>Outcome:</strong> Audit conclusions and findings are submitted for independent certification review and decision.</div></div>
+        </div>
+        <div class="is-vs-badge" aria-hidden="true">VS</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-sec alt">
+    <div class="is-wrap">
+      <h2 class="is-title" style="text-align:center;margin-bottom:36px">Our Certification Process</h2>
+      <div class="is-process">
+        <div class="is-step"><div class="num"><i class="fas fa-file-circle-plus" aria-hidden="true"></i></div><p>Application Submission</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-file-lines" aria-hidden="true"></i></div><p>Contract Review and Proposal</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-calendar-check" aria-hidden="true"></i></div><p>Audit Planning</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-magnifying-glass" aria-hidden="true"></i></div><p>Stage 1 Audit</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div><p>Stage 2 Audit</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-user-check" aria-hidden="true"></i></div><p>Independent Certification Review</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-location-dot" aria-hidden="true"></i></div><p>Certification Decision</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-certificate" aria-hidden="true"></i></div><p>Certificate Issuance</p></div>
+        <div class="is-step"><div class="num"><i class="fas fa-shield-halved" aria-hidden="true"></i></div><p>Surveillance &amp; Recertification</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-sec">
+    <div class="is-wrap is-split">
+      <div>
+        <h2 class="is-title">Organizations We Serve</h2>
+        <div class="is-orgs">
+          <div class="is-org"><i class="fas fa-laptop" aria-hidden="true"></i>Information Technology</div>
+          <div class="is-org"><i class="fas fa-code" aria-hidden="true"></i>Software Development</div>
+          <div class="is-org"><i class="fas fa-diagram-project" aria-hidden="true"></i>SaaS Providers</div>
+          <div class="is-org"><i class="fas fa-cloud" aria-hidden="true"></i>Cloud Service Providers</div>
+          <div class="is-org"><i class="fas fa-building-columns" aria-hidden="true"></i>Financial Services</div>
+          <div class="is-org"><i class="fas fa-heart-pulse" aria-hidden="true"></i>Healthcare Organizations</div>
+          <div class="is-org"><i class="fas fa-industry" aria-hidden="true"></i>Manufacturing</div>
+          <div class="is-org"><i class="fas fa-cart-shopping" aria-hidden="true"></i>E-commerce</div>
+          <div class="is-org"><i class="fas fa-phone" aria-hidden="true"></i>Telecommunications</div>
+          <div class="is-org"><i class="fas fa-truck" aria-hidden="true"></i>Logistics &amp; Supply Chain</div>
+          <div class="is-org"><i class="fas fa-graduation-cap" aria-hidden="true"></i>Educational Institutions</div>
+          <div class="is-org"><i class="fas fa-landmark" aria-hidden="true"></i>Government Institutions</div>
+          <div class="is-org"><i class="fas fa-users" aria-hidden="true"></i>Professional Services</div>
+          <div class="is-org"><i class="fas fa-bolt" aria-hidden="true"></i>Energy &amp; Utilities</div>
+          <div class="is-org"><i class="fas fa-wheat-awn" aria-hidden="true"></i>Food Industries</div>
+        </div>
+      </div>
+      <div>
+        <h2 class="is-title">Why Choose EUROCERT?</h2>
+        <ul class="is-why-list">
+          <li><i class="fas fa-check" aria-hidden="true"></i><div><strong>Independent and Impartial Assessment</strong><span>Objective and unbiased certification activities.</span></div></li>
+          <li><i class="fas fa-check" aria-hidden="true"></i><div><strong>Competent Audit Professionals</strong><span>Experienced auditors across various industries and technologies.</span></div></li>
+          <li><i class="fas fa-check" aria-hidden="true"></i><div><strong>Transparent Certification Process</strong><span>Clear communication and streamlined audit methodology.</span></div></li>
+          <li><i class="fas fa-check" aria-hidden="true"></i><div><strong>Independent Certification Decisions</strong><span>Decisions are reviewed independently from the audit team.</span></div></li>
+          <li><i class="fas fa-check" aria-hidden="true"></i><div><strong>Multi-Sector Experience</strong><span>Certification services for diverse sectors and organization types.</span></div></li>
+          <li><i class="fas fa-check" aria-hidden="true"></i><div><strong>Professional Service Delivery</strong><span>Timely, efficient and value-driven certification services.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-impartial">
+    <div class="is-wrap is-duo">
+      <div class="is-card-dark s-left">
+        <div class="shield-ico" aria-hidden="true"><i class="fas fa-shield-halved"></i></div>
+        <div>
+          <h3>Our Commitment to Impartiality</h3>
+          <p>To protect the independence and impartiality of the certification process, EUROCERT does not provide consultancy, implementation, system development or internal audit services to organizations for management systems that it certifies.</p>
+        </div>
+      </div>
+      <div class="is-card-dark s-right">
+        <div class="is-cost-copy">
+          <h3>Factors Affecting Certification Cost</h3>
+          <p>The cost and audit duration depend on factors such as organization size, number of employees, locations, scope, complexity, technologies, processes, outsourced activities and existing certification status.</p>
+          <a class="is-btn is-btn-gold" href="/contact/">Request a Tailored Proposal</a>
+        </div>
+        <img class="art" src="https://res.cloudinary.com/drm8wdb7m/image/upload/f_auto,q_auto:good,w_1600/v1784350815/ChatGPT_Image_Jul_18_2026_10_28_50_AM_vweu7e.png" alt="Certification cost and growth illustration" width="440" height="440" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-sec">
+    <div class="is-wrap">
+      <h2 class="is-title" style="text-align:center;margin-bottom:28px">Frequently Asked Questions</h2>
+      <div class="is-faq-grid">
+        <details class="is-faq"><summary>How long does the certification process take?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">Timelines depend on readiness and scope. After application, Stage 1 and Stage 2 audits and an independent certification review, most organizations complete the process within the agreed project schedule.</div></details>
+        <details class="is-faq"><summary>Can a multi-site organization be certified?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">Yes. Multi-site certification is available where locations operate under a common ISMS. Sampling and audit planning are based on the certification scope and site structure.</div></details>
+        <details class="is-faq"><summary>Can you help us implement ISO/IEC 27001?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">No. To protect impartiality, EUROCERT does not provide consultancy, implementation, system development or internal audit services for management systems it certifies.</div></details>
+        <details class="is-faq"><summary>Can we transfer our existing ISO/IEC 27001 certificate?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">Yes. Transfers from another accredited certification body are possible after a review of certification status, audit history and outstanding nonconformities.</div></details>
+        <details class="is-faq"><summary>What is the difference between Stage 1 and Stage 2?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">Stage 1 reviews documented information and readiness. Stage 2 evaluates implementation and effectiveness of the ISMS against ISO/IEC 27001 requirements.</div></details>
+        <details class="is-faq"><summary>Are remote audits available?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">Remote or hybrid audits may be used where appropriate, subject to risk assessment, technology readiness and the nature of the activities being audited.</div></details>
+        <details class="is-faq"><summary>How is certification maintained?<i class="fas fa-chevron-down" aria-hidden="true"></i></summary><div class="ans">Certification is typically maintained through planned surveillance audits during the three-year cycle, followed by a recertification audit before the certificate expires.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-cta">
+    <div class="is-wrap is-cta-grid">
+      <div class="is-cta-copy">
+        <h2>Ready to Begin Your ISO/IEC 27001 Certification Process?</h2>
+        <p>Demonstrate your organization's commitment to information security through an independent and internationally recognized certification process.</p>
+        <div class="is-cta-actions">
+          <a class="is-btn is-btn-gold" href="/contact/">Request a Certification Proposal</a>
+          <a class="is-btn is-btn-outline-dark" href="/contact/">Request a Callback</a>
+        </div>
+      </div>
+      <div class="is-contact-box">
+        <a href="tel:+911142722700"><span class="ci" aria-hidden="true"><i class="fas fa-phone"></i></span><span><span class="clabel">Call Us</span><span class="cval">+91 11 4272 2700</span></span></a>
+        <a href="mailto:info@eurocert.org"><span class="ci" aria-hidden="true"><i class="fas fa-envelope"></i></span><span><span class="clabel">Email Us</span><span class="cval">info@eurocert.org</span></span></a>
+        <a href="/contact/"><span class="ci" aria-hidden="true"><i class="fas fa-comment-dots"></i></span><span><span class="clabel">Submit an Enquiry</span><span class="cval">We're here to help</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="is-sec alt">
+    <div class="is-wrap">
+      <h2 class="is-title" style="text-align:center;margin-bottom:24px">Related Certifications</h2>
+      <div class="is-related">
+        <a class="is-rel" href="/management-system/iso-9001/">
+          <img src="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367536/eurocert/m2.png.png" alt="ISO 9001" loading="lazy"/>
+          <div class="body"><h3>ISO 9001</h3><p>Quality Management System certification for consistent products and services.</p></div>
+        </a>
+        <a class="is-rel" href="/management-system/iso-20000/">
+          <img src="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367505/eurocert/m14.png.png" alt="ISO 20000" loading="lazy"/>
+          <div class="body"><h3>ISO 20000-1</h3><p>IT Service Management certification for reliable service delivery.</p></div>
+        </a>
+        <a class="is-rel" href="/management-system/iso-22301/">
+          <img src="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367512/eurocert/m15.png.png" alt="ISO 22301" loading="lazy"/>
+          <div class="body"><h3>ISO 22301</h3><p>Business Continuity Management for resilience and recovery readiness.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+</BaseLayout>
