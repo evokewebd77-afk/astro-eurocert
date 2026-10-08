@@ -110,13 +110,13 @@ const {
     <!-- Recent Posts / Contact Us drawer -->
     <EngagementDrawer />
 
-    <!-- SOFIA opens as a centered popup as soon as the page is ready. -->
+    <!-- SOFIA: docked launcher only; the centred modal appears solely after Maximize. -->
     <script is:inline>
       (function () {
         if (window.__sophiaLoaderArmed) return;
         window.__sophiaLoaderArmed = true;
         var s = document.createElement('script');
-        s.src = '/sophia-widget.js';
+        s.src = '/sophia-widget.js?v=2';
         s.async = true;
         document.body.appendChild(s);
       })();

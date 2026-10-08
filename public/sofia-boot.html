@@ -63,18 +63,16 @@
         });
 
         if (forceOpen) {
-          // 1. Initialize outer widget in Open + Fullscreen (centered modal) mode
+          // 1. Open the outer widget in DOCKED mode (open=true, fullscreen=false).
+          //    The chat only moves to the centre AFTER the user clicks Maximize.
           const target1 = "function Oe(){let[e,t]=(0,_.useState)(!1),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!1)";
-          const repl1 = "function Oe(){let[e,t]=(0,_.useState)(!0),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!0)";
+          const repl1 = "function Oe(){let[e,t]=(0,_.useState)(!0),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!1)";
           code = code.replace(target1, repl1);
 
-          // 2. Initialize inner chat in Fullscreen/Active mode so header displays the Minimize/Compress icon
-          const target2 = "qe=(0,_.useRef)(null),Je=(0,_.useRef)([]),[Ye,Xe]=(0,_.useState)(!1)";
-          const repl2 = "qe=(0,_.useRef)(null),Je=(0,_.useRef)([]),[Ye,Xe]=(0,_.useState)(!0)";
-          code = code.replace(target2, repl2);
+          // 2. Keep the inner chat windowed (Ye=false) so its header shows the Maximize icon.
 
           // Fallback if formatting differed
-          if (!code.includes("useState)(!0),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!0)")) {
+          if (!code.includes("function Oe(){let[e,t]=(0,_.useState)(!0),[n,r]=(0,_.useState)(!0),[i,a]=(0,_.useState)(!1)")) {
             code = code.replace(
               "function Oe(){let[e,t]=(0,_.useState)(!1)",
               "function Oe(){let[e,t]=(0,_.useState)(!0)"

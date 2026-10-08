@@ -2,7 +2,7 @@
   if (window.__sophiaWidgetLoaded) return;
   window.__sophiaWidgetLoaded = true;
 
-  var BOOT = "/sofia-boot.html";
+  var BOOT = "/sofia-boot.html?v=2";
   var FALLBACK = "https://eurocert-chatbot-frontend.vercel.app/";
   var IFRAME_ID = "sofia-widget-iframe";
   var CSS_ID = "sofia-widget-css";
@@ -27,7 +27,7 @@
 
   var isHome = isHomePath(location.pathname);
   // mode: "centered" = hero modal, "docked" = bottom-right small, "closed" = launcher only
-  var mode = isHome ? "closed" : "centered";
+  var mode = isHome ? "closed" : "docked";
   var seenOpen = false;
   var userClosed = isHome ? true : false;
   var usedFallback = false;
@@ -301,43 +301,35 @@
     flattenChatChrome();
     bindInnerClose();
 
-    if (isHome && mode !== "docked" && mode !== "closed") {
-      mode = "closed";
-    }
-
-    // ── CENTERED (Hero modal) ─────────────────────────────────────────────
+    // ── CENTERED (only after the user clicks Maximize) ────────────────────
     if (mode === "centered") {
-      if (isHome) {
-        mode = "closed";
-      } else {
-        if (root) root.classList.remove("sofia-docked");
-        var box = centerBox(vp);
-        if (backdrop) backdrop.style.display = "block";
-        if (stage) {
-          stage.classList.add("is-open");
-          stage.style.width = box.w + "px";
-          stage.style.height = box.h + "px";
-          stage.style.borderRadius = box.radius + "px";
-          stage.style.top = Math.round(box.cy) + "px";
-          stage.classList.toggle("sofia-typing", !!box.typing);
-        }
-        if (card) card.style.display = seenOpen ? "none" : "flex";
-        if (launcher) launcher.classList.remove("is-on");
-        iframe.style.display = "block";
-        iframe.style.visibility = seenOpen ? "visible" : "hidden";
-        iframe.style.opacity = seenOpen ? "1" : "0";
-        liftFloats(box.h, 16);
-        if (document.body) document.body.classList.add("sofia-open");
-        document.documentElement.style.overflow = "hidden";
-        return;
+      if (root) root.classList.remove("sofia-docked");
+      var box = centerBox(vp);
+      if (backdrop) backdrop.style.display = "block";
+      if (stage) {
+        stage.classList.add("is-open");
+        stage.style.width = box.w + "px";
+        stage.style.height = box.h + "px";
+        stage.style.borderRadius = box.radius + "px";
+        stage.style.top = Math.round(box.cy) + "px";
+        stage.classList.toggle("sofia-typing", !!box.typing);
       }
+      if (card) card.style.display = seenOpen ? "none" : "flex";
+      if (launcher) launcher.classList.remove("is-on");
+      iframe.style.display = "block";
+      iframe.style.visibility = seenOpen ? "visible" : "hidden";
+      iframe.style.opacity = seenOpen ? "1" : "0";
+      liftFloats(box.h, 16);
+      if (document.body) document.body.classList.add("sofia-open");
+      document.documentElement.style.overflow = "hidden";
+      return;
     }
 
     // ── DOCKED (Small bottom-right widget) ───────────────────────────────
     if (mode === "docked") {
       if (root) root.classList.add("sofia-docked");
       if (backdrop) backdrop.style.display = "none";
-      if (card) card.style.display = "none";
+      if (card) card.style.display = seenOpen ? "none" : "flex";
       if (stage) {
         stage.classList.remove("is-open");
         // Stage stays in DOM but goes invisible via CSS; chat-slot breaks out via position:fixed
@@ -466,9 +458,27 @@
     applySize();
   }
 
+  /*
+   * Astro <ViewTransitions /> swaps pages WITHOUT reloading, so this script
+   * only ever runs once per browser session. On every client-side navigation
+   * we must re-evaluate the path and demote "centered" back to docked/closed,
+   * otherwise a maximized chat keeps covering the newly opened page.
+   */
+  function onPageNavigation() {
+    isHome = isHomePath(location.pathname);
+    if (isHome) {
+      mode = "closed";
+      userClosed = true;
+    } else if (mode === "centered") {
+      mode = "docked";
+    }
+    applySize();
+  }
+
   function wire() {
     if (wired) return;
     wired = true;
+    document.addEventListener("astro:page-load", onPageNavigation);
     window.addEventListener("message", onMessage);
     window.addEventListener("resize", applySize);
     window.addEventListener("orientationchange", function () { setTimeout(applySize, 100); });
@@ -506,7 +516,7 @@
       iframe.title = "SOFIA Chat";
       iframe.setAttribute("allow", "microphone");
       var src = BOOT;
-      if (autoOpenWanted && !autoStarted && !isHome) src += "?open=1";
+      if (autoOpenWanted && !autoStarted && !isHome) src += (src.indexOf("?") >= 0 ? "&" : "?") + "open=1";
       autoStarted = true;
       if (autoOpenWanted && !isHome) window.__sofiaDidAutoOpen = true;
       iframe.src = src;
