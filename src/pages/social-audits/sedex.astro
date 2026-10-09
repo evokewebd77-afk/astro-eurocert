@@ -15,7 +15,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <!-- SECTION 1 — HERO -->
 <section class="relative min-h-[55vh] flex items-center justify-center overflow-hidden bg-[#030a16]">
   <div class="absolute inset-0 z-0">
-    <img src="/Sedex imagery .jpg" alt="SMETA Sedex Audit Services" class="w-full h-full object-cover opacity-40" />
+    <img src="/Sedex imagery 5.jpg" alt="SMETA Sedex Audit Services" class="w-full h-full object-cover opacity-40" />
     <div class="absolute inset-0 bg-[#030a16]/55"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-[#030a16]/90 via-[#030a16]/75 to-[#030a16]"></div>
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(3,10,22,0.75)_0%,rgba(3,10,22,0.35)_55%,transparent_100%)]"></div>
@@ -91,36 +91,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">Audit Options</h4>
         <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">SMETA 2-Pillar and <span class="text-euro-600">4-Pillar Audits</span></h2>
       </div>
-      <div class="grid sm:grid-cols-2 gap-6 mb-8">
-        <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-100 w-full aspect-[4/3] bg-white flex items-center justify-center p-4">
-          <img src="/Sedex imagery 6.jpg" alt="SMETA 2-Pillar and 4-Pillar audits" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async" />
-        </div>
-        <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-100 w-full aspect-[4/3] bg-white flex items-center justify-center p-4">
-          <img src="/Sedex imagery .jpg" alt="SMETA audit services" class="max-w-full max-h-full object-contain" loading="lazy" decoding="async" />
-        </div>
-      </div>
       <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] hover:border-euro-200 hover:shadow-lg transition">
-          <div class="w-11 h-11 rounded-xl bg-euro-600 flex items-center justify-center mb-4"><i class="fas fa-clipboard-check text-white text-sm"></i></div>
-          <h3 class="heading-font text-lg font-bold text-slate-900 mb-3">SMETA 2-Pillar Audit</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-3">The two main assessment areas are:</p>
-          <ul class="space-y-2 text-slate-600 text-sm leading-relaxed mb-3">
-            <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Labour standards</span></li>
-            <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Health and safety</span></li>
-          </ul>
-          <p class="text-slate-500 text-sm leading-relaxed">Additional requirements within the methodology include basic environmental checks and relevant management practices.</p>
+        <div class="group rounded-2xl overflow-hidden border border-slate-200 bg-[#f8fafc] hover:border-euro-200 hover:shadow-lg transition flex flex-col">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="/Sedex imagery 6.jpg" alt="SMETA 2-Pillar audit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+          </div>
+          <div class="p-7">
+            <div class="w-11 h-11 rounded-xl bg-euro-600 flex items-center justify-center mb-4"><i class="fas fa-clipboard-check text-white text-sm"></i></div>
+            <h3 class="heading-font text-lg font-bold text-slate-900 mb-3">SMETA 2-Pillar Audit</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-3">The two main assessment areas are:</p>
+            <ul class="space-y-2 text-slate-600 text-sm leading-relaxed mb-3">
+              <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Labour standards</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Health and safety</span></li>
+            </ul>
+            <p class="text-slate-500 text-sm leading-relaxed">Additional requirements within the methodology include basic environmental checks and relevant management practices.</p>
+          </div>
         </div>
-        <div class="p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] hover:border-euro-200 hover:shadow-lg transition">
-          <div class="w-11 h-11 rounded-xl bg-euro-600 flex items-center justify-center mb-4"><i class="fas fa-shield-halved text-white text-sm"></i></div>
-          <h3 class="heading-font text-lg font-bold text-slate-900 mb-3">SMETA 4-Pillar Audit</h3>
-          <p class="text-slate-500 text-sm leading-relaxed mb-3">The four assessment areas are:</p>
-          <ul class="space-y-2 text-slate-600 text-sm leading-relaxed mb-3">
-            <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Labour standards</span></li>
-            <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Health and safety</span></li>
-            <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Environment</span></li>
-            <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Business ethics</span></li>
-          </ul>
-          <p class="text-slate-500 text-sm leading-relaxed">A 4-Pillar audit includes extended environmental assessment and business ethics alongside the two core pillars.</p>
+        <div class="group rounded-2xl overflow-hidden border border-slate-200 bg-[#f8fafc] hover:border-euro-200 hover:shadow-lg transition flex flex-col">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="/Sedex imagery .jpg" alt="SMETA 4-Pillar audit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+          </div>
+          <div class="p-7">
+            <div class="w-11 h-11 rounded-xl bg-euro-600 flex items-center justify-center mb-4"><i class="fas fa-shield-halved text-white text-sm"></i></div>
+            <h3 class="heading-font text-lg font-bold text-slate-900 mb-3">SMETA 4-Pillar Audit</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-3">The four assessment areas are:</p>
+            <ul class="space-y-2 text-slate-600 text-sm leading-relaxed mb-3">
+              <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Labour standards</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Health and safety</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Environment</span></li>
+              <li class="flex items-start gap-2"><i class="fas fa-check text-euro-600 mt-1 text-[10px]"></i><span>Business ethics</span></li>
+            </ul>
+            <p class="text-slate-500 text-sm leading-relaxed">A 4-Pillar audit includes extended environmental assessment and business ethics alongside the two core pillars.</p>
+          </div>
         </div>
       </div>
       <div class="p-7 rounded-2xl border border-euro-100 bg-euro-50/40 text-center">
@@ -209,18 +211,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <!-- SECTION 7 — REPORTING -->
 <section class="py-14 lg:py-18 bg-[#f8fafc] border-t border-slate-100">
   <div class="container mx-auto px-6">
-    <div class="max-w-5xl mx-auto grid lg:grid-cols-5 gap-10 items-center">
-      <div class="lg:col-span-3 lg:order-2 space-y-5">
+    <div class="max-w-5xl mx-auto">
+      <div class="space-y-5">
       <div>
         <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">Reporting</h4>
         <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight">SMETA Audit <span class="text-euro-600">Report and CAPR</span></h2>
       </div>
       <p class="text-slate-500 text-[15px] leading-relaxed">The SMETA report records the site assessment and findings. The CAPR documents relevant findings and corrective-action requirements.</p>
       <p class="text-slate-500 text-[15px] leading-relaxed">These outputs help buyers and suppliers understand risks and track improvements. They do not certify the facility or guarantee acceptance by every buyer.</p>
-      </div>
-      <div class="lg:col-span-2 lg:order-1 relative rounded-2xl overflow-hidden shadow-xl border border-slate-100 h-[300px] md:h-[380px] group">
-        <img src="/Sedex imagery 3.jpg" alt="SMETA audit report and CAPR" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent"></div>
       </div>
     </div>
   </div>
@@ -229,8 +227,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <!-- SECTION 8 — COST -->
 <section class="py-14 lg:py-18 bg-white border-t border-slate-100">
   <div class="container mx-auto px-6">
-    <div class="max-w-5xl mx-auto grid lg:grid-cols-5 gap-10 items-center">
-      <div class="lg:col-span-3">
+    <div class="max-w-5xl mx-auto">
+      <div>
       <div class="mb-6">
         <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">Cost</h4>
         <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight">SMETA Audit <span class="text-euro-600">Cost in India</span></h2>
@@ -251,10 +249,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <p class="text-slate-500 text-[15px] leading-relaxed mb-6">The quotation should distinguish audit charges from Sedex membership and any applicable platform-related charges.</p>
       <a class="inline-flex items-center justify-center gap-2 heading-font text-[11px] font-bold uppercase tracking-[0.2em] text-[#030a16] bg-eurogold-400 rounded-full px-8 py-3.5 hover:bg-eurogold-300 transition-all shadow-lg shadow-eurogold-400/20" href="/contact/">Request a SMETA Audit Quote <i class="fas fa-arrow-right text-[9px]"></i></a>
       </div>
-      <div class="lg:col-span-2 relative rounded-2xl overflow-hidden shadow-xl border border-slate-100 h-[360px] md:h-[460px] group">
-        <img src="/Sedex imagery 5.jpg" alt="SMETA audit cost planning" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -263,7 +257,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <section class="py-14 lg:py-18 bg-[#f8fafc] border-t border-slate-100">
   <div class="container mx-auto px-6">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-5 gap-10 items-center">
-      <div class="lg:col-span-3 lg:order-2 space-y-5">
+      <div class="lg:col-span-3 lg:order-1 space-y-5">
       <div>
         <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">Preparation</h4>
         <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight">How to Prepare for a <span class="text-euro-600">SMETA Audit</span></h2>
@@ -274,7 +268,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <p class="text-slate-600 text-sm leading-relaxed"><strong class="text-slate-700">Preparation must reflect actual workplace conditions.</strong> Do not coach workers&#8217; answers, conceal operations or create misleading records.</p>
       </div>
       </div>
-      <div class="lg:col-span-2 lg:order-1 relative rounded-2xl overflow-hidden shadow-xl border border-slate-100 h-[300px] md:h-[380px] group">
+      <div class="lg:col-span-2 lg:order-2 relative rounded-2xl overflow-hidden shadow-xl border border-slate-100 h-[300px] md:h-[380px] group">
         <img src="/Sedex imagery 4.jpg" alt="Preparing for a SMETA audit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent"></div>
       </div>
