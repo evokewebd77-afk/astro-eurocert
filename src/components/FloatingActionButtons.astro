@@ -16,6 +16,7 @@ const btnClass =
 >
   <a
     href={`tel:+${phoneNum}`}
+    onclick={`return gtag_report_conversion('tel:+${phoneNum}');`}
     class={btnClass}
     aria-label="Call us (+91 9316012883)"
     title="Call us: +91 9316012883"
