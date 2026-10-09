@@ -105,7 +105,8 @@
       phone: data.get('phone'),
       service: 'Quick Callback',
       message: data.get('message'),
-      source: 'Footer Callback'
+      source: 'Footer Callback',
+      gclid: window.eurocertGclid || ''
     };
     const btn = form.querySelector('[type="submit"]');
     btn.disabled = true;
