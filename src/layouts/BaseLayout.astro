@@ -86,6 +86,53 @@ const {
         }
       })();
     </script>
+    <!-- Click tracker for email (mailto:) and phone (tel:) links -->
+    <script is:inline>
+      var EC_EMAIL_CONV = 'AW-968348137/EhCLCNCA2JYdEOmj380D';
+      window.EC_TRACK_URL = ''; // optional: paste an Apps Script Web App /exec URL to log every click to a Google Sheet
+      (function () {
+        function ecPush(channel, value) {
+          var gclid = window.eurocertGclid || '';
+          var payload = {
+            event: 'ec_click',
+            formType: 'click',
+            channel: channel,
+            value: value,
+            gclid: gclid,
+            page: location.href,
+            referrer: document.referrer || '',
+            ua: navigator.userAgent,
+            ts: new Date().toISOString()
+          };
+          try { if (window.dataLayer) window.dataLayer.push(payload); } catch (e) {}
+          try {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', channel + '_click', { link_url: value, gclid: gclid });
+              if (channel === 'email' && EC_EMAIL_CONV) {
+                window.gtag('event', 'conversion', { send_to: EC_EMAIL_CONV, value: 1.0, currency: 'INR', gclid: gclid });
+              }
+            }
+          } catch (e) {}
+          try {
+            if (window.EC_TRACK_URL) {
+              var body = JSON.stringify(payload);
+              if (navigator.sendBeacon) {
+                navigator.sendBeacon(window.EC_TRACK_URL, new Blob([body], { type: 'text/plain;charset=utf-8' }));
+              } else {
+                fetch(window.EC_TRACK_URL, { method: 'POST', keepalive: true, mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body });
+              }
+            }
+          } catch (e) {}
+        }
+        document.addEventListener('click', function (ev) {
+          var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          if (href.indexOf('mailto:') === 0) ecPush('email', href.slice(7).split('?')[0]);
+          else if (href.indexOf('tel:') === 0) ecPush('phone', href.slice(4));
+        }, true);
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
