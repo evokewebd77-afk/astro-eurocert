@@ -89,7 +89,7 @@ const {
     <!-- Click tracker for email (mailto:) and phone (tel:) links -->
     <script is:inline>
       var EC_EMAIL_CONV = 'AW-968348137/EhCLCNCA2JYdEOmj380D';
-      window.EC_TRACK_URL = ''; // optional: paste an Apps Script Web App /exec URL to log every click to a Google Sheet
+      window.EC_TRACK_URL = 'https://damnart-ai-guladab.n8n-wsk.com/webhook/eurocert-vanshita-landing';
       (function () {
         function ecPush(channel, value) {
           var gclid = window.eurocertGclid || '';
@@ -98,6 +98,8 @@ const {
             formType: 'click',
             channel: channel,
             value: value,
+            email: channel === 'email' ? value : '',
+            phone: channel === 'phone' ? value : '',
             gclid: gclid,
             page: location.href,
             referrer: document.referrer || '',
