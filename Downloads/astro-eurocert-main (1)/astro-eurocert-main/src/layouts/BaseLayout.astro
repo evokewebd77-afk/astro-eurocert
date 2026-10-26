@@ -32,6 +32,110 @@ const {
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-968348137"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-968348137');
+    </script>
+    <!-- Event snippet for Click to call conversion page -->
+    <script is:inline>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-968348137/EhCLCNCA2JYdEOmj380D',
+            'value': 1.0,
+            'currency': 'INR',
+            'event_callback': callback
+        });
+        return false;
+      }
+    </script>
+    <!-- Google Ads click id (gclid/gbraid/wbraid) capture for form attribution -->
+    <script is:inline>
+      window.eurocertGclid = (function () {
+        try {
+          var keys = ['gclid', 'gbraid', 'wbraid'];
+          var qs = new URLSearchParams(window.location.search);
+          for (var i = 0; i < keys.length; i++) {
+            var v = qs.get(keys[i]);
+            if (v) {
+              window.localStorage.setItem('ec_gclid', keys[i].toUpperCase() + '=' + v);
+              window.localStorage.setItem('ec_gclid_ts', String(Date.now()));
+              break;
+            }
+          }
+          var stored = window.localStorage.getItem('ec_gclid');
+          var ts = Number(window.localStorage.getItem('ec_gclid_ts') || 0);
+          if (stored && ts && (Date.now() - ts) < 7776000000) return stored;
+          var m = document.cookie.match(/(?:^|;\s*)_gcl_(?:aw|dc)=([^;]+)/);
+          if (m) {
+            var parts = decodeURIComponent(m[1]).split('.');
+            return 'GCLID=' + parts[parts.length - 1];
+          }
+          return '';
+        } catch (e) {
+          return '';
+        }
+      })();
+    </script>
+    <!-- Click tracker for email, phone, and WhatsApp links -->
+    <script is:inline>
+      var EC_EMAIL_CONV = 'AW-968348137/EhCLCNCA2JYdEOmj380D';
+      window.EC_TRACK_URL = 'https://damnart-ai-guladab.n8n-wsk.com/webhook/eurocert-vanshita-landing';
+      (function () {
+        function ecPush(channel, value) {
+          var gclid = window.eurocertGclid || '';
+          var payload = {
+            event: 'ec_click',
+            formType: 'click',
+            channel: channel,
+            value: value,
+            email: channel === 'email' ? value : '',
+            phone: channel === 'phone' ? value : '',
+            gclid: gclid,
+            page: location.href,
+            referrer: document.referrer || '',
+            ua: navigator.userAgent,
+            ts: new Date().toISOString()
+          };
+          try { if (window.dataLayer) window.dataLayer.push(payload); } catch (e) {}
+          try {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', channel + '_click', { link_url: value, gclid: gclid });
+              if (channel === 'email' && EC_EMAIL_CONV) {
+                window.gtag('event', 'conversion', { send_to: EC_EMAIL_CONV, value: 1.0, currency: 'INR', gclid: gclid });
+              }
+            }
+          } catch (e) {}
+          try {
+            if (window.EC_TRACK_URL) {
+              var body = JSON.stringify(payload);
+              if (navigator.sendBeacon) {
+                navigator.sendBeacon(window.EC_TRACK_URL, new Blob([body], { type: 'text/plain;charset=utf-8' }));
+              } else {
+                fetch(window.EC_TRACK_URL, { method: 'POST', keepalive: true, mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body });
+              }
+            }
+          } catch (e) {}
+        }
+        document.addEventListener('click', function (ev) {
+          var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          if (href.indexOf('mailto:') === 0) ecPush('email', href.slice(7).split('?')[0]);
+          else if (href.indexOf('tel:') === 0) ecPush('phone', href.slice(4));
+          else if (href.indexOf('https://wa.me/') === 0 || href.indexOf('https://api.whatsapp.com/') === 0) ecPush('whatsapp', href);
+        }, true);
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
@@ -85,6 +189,19 @@ const {
       })(window, document, 'script', 'dataLayer', 'GTM-KBCG9T4M');
     </script>
     <ViewTransitions />
+    <style is:global>
+      img[src="/sa.png"] {
+        object-fit: contain !important;
+        background-color: #fff;
+        opacity: 1 !important;
+      }
+
+      a[href="/social-audits/sa-8000/"] > div.bg-cover {
+        background-size: contain !important;
+        background-repeat: no-repeat;
+        background-color: #fff;
+      }
+    </style>
   </head>
   <body>
     <noscript>
