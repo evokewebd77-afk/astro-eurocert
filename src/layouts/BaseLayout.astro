@@ -86,7 +86,7 @@ const {
         }
       })();
     </script>
-    <!-- Click tracker for email (mailto:) and phone (tel:) links -->
+    <!-- Click tracker for email, phone, and WhatsApp links -->
     <script is:inline>
       var EC_EMAIL_CONV = 'AW-968348137/EhCLCNCA2JYdEOmj380D';
       window.EC_TRACK_URL = 'https://damnart-ai-guladab.n8n-wsk.com/webhook/eurocert-vanshita-landing';
@@ -132,6 +132,7 @@ const {
           var href = a.getAttribute('href') || '';
           if (href.indexOf('mailto:') === 0) ecPush('email', href.slice(7).split('?')[0]);
           else if (href.indexOf('tel:') === 0) ecPush('phone', href.slice(4));
+          else if (href.indexOf('https://wa.me/') === 0 || href.indexOf('https://api.whatsapp.com/') === 0) ecPush('whatsapp', href);
         }, true);
       })();
     </script>
