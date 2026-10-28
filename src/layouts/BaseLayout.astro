@@ -94,20 +94,19 @@ const {
     <script is:inline>
       (function () {
         var standardPhone = '919316012883';
-        var adsPhone = '918065495072';
+        var contactPhone = '918065495072';
 
-        function updateAdsPhoneLinks() {
-          if (!window.eurocertIsGoogleAds) return;
+        function updatePhoneLinks() {
           document.querySelectorAll('a[href="tel:+' + standardPhone + '"]').forEach(function (link) {
-            link.setAttribute('href', 'tel:+' + adsPhone);
+            link.setAttribute('href', 'tel:+' + contactPhone);
             var onclick = link.getAttribute('onclick');
-            if (onclick) link.setAttribute('onclick', onclick.replace('tel:+' + standardPhone, 'tel:+' + adsPhone));
+            if (onclick) link.setAttribute('onclick', onclick.replace('tel:+' + standardPhone, 'tel:+' + contactPhone));
           });
         }
 
-        document.addEventListener('DOMContentLoaded', updateAdsPhoneLinks);
-        document.addEventListener('astro:page-load', updateAdsPhoneLinks);
-        if (document.readyState !== 'loading') updateAdsPhoneLinks();
+        document.addEventListener('DOMContentLoaded', updatePhoneLinks);
+        document.addEventListener('astro:page-load', updatePhoneLinks);
+        if (document.readyState !== 'loading') updatePhoneLinks();
       })();
     </script>
     <!-- Click tracker for email, phone, and WhatsApp links -->
