@@ -1,0 +1,392 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    title: 'SLCP Certification | SLCP | Eurocert Asia',
+    excerpt: 'Understand the SLCP assessment and verification process, key requirements, data collection, verification steps and how it supports social compliance.',
+    tag: 'Social Audits',
+    date: '2023-08-02',
+    readTime: '6 min read',
+    href: '/post/slcp-certification/',
+    image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367718/eurocert/r1.png.png',
+    featured: true
+  },
+  {
+    title: 'C-TPAT - The New Minimum Security Criteria from CBP',
+    excerpt: 'The new CBP minimum security criteria for manufacturers and exporters, and what your supply chain must do to stay aligned.',
+    tag: 'C-TPAT',
+    date: '2023-07-15',
+    readTime: '5 min read',
+    href: '/post/ctpat-minimum-security-criteria/',
+    image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367726/eurocert/r2.png.png',
+    featured: false
+  },
+  {
+    title: 'C-TPAT Compliance vs C-TPAT Validation',
+    excerpt: 'A clear look at the difference between C-TPAT compliance and validation, and what each means for your security programme.',
+    tag: 'C-TPAT',
+    date: '2023-06-20',
+    readTime: '4 min read',
+    href: '/post/ctpat-compliance-vs-validation/',
+    image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367735/eurocert/r3.png.png',
+    featured: false
+  },
+  {
+    title: 'Role of Self Assessment Questionnaire in Sedex Audit',
+    excerpt: 'How the Sedex self-assessment questionnaire works, why it matters and how to prepare accurate, audit-ready answers.',
+    tag: 'SEDEX',
+    date: '2023-05-10',
+    readTime: '5 min read',
+    href: '/post/sedex-self-assessment/',
+    image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367739/eurocert/r4.png.png',
+    featured: false
+  },
+  {
+    title: 'SA 8000 Certification',
+    excerpt: 'A practical guide to SA8000 certification requirements, the audit process and the business benefits of social accountability.',
+    tag: 'SA 8000',
+    date: '2017-02-08',
+    readTime: '7 min read',
+    href: '/post/sa-8000-certification/',
+    image: '/sa.png',
+    featured: false
+  },
+  {
+    title: 'Become our Associate',
+    excerpt: 'Explore partnership opportunities with Eurocert and learn how to become an accredited associate in your region.',
+    tag: 'Careers',
+    date: '2016-11-15',
+    readTime: '3 min read',
+    href: '/post/become-associate/',
+    image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367748/eurocert/r6.png.png',
+    featured: false
+  },
+  {
+    title: 'Benefits of Becoming our Associate',
+    excerpt: 'The commercial and professional benefits of joining the Eurocert associate network across global markets.',
+    tag: 'Careers',
+    date: '2016-11-04',
+    readTime: '3 min read',
+    href: '/post/benefits-associate/',
+    image: 'https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto,w_720/v1782367752/eurocert/r7.png.png',
+    featured: false
+  }
+];
+
+const categories = [
+  {
+    title: 'ISO Standards & Management Systems',
+    description: 'Get updates on ISO management system standards, including quality management, environmental management, occupational health and safety, information security, and emerging management practices.',
+    href: '/management-systems/',
+    icon: 'fas fa-certificate'
+  },
+  {
+    title: 'CE Marking & Product Compliance',
+    description: 'Discover regulatory developments related to CE marking, European product requirements, conformity assessment, and market access for manufacturers and exporters.',
+    href: '/ce-certification/',
+    icon: 'fas fa-industry'
+  },
+  {
+    title: 'Social & Ethical Compliance',
+    description: 'Follow developments in ethical sourcing, labour practices, responsible supply chains, social accountability standards, and third-party social auditing.',
+    href: '/social-audits/',
+    icon: 'fas fa-handshake'
+  },
+  {
+    title: 'Food Safety & Agriculture',
+    description: 'Stay informed about food safety management, hygiene practices, agricultural certification, supply chain assurance, and international food safety standards.',
+    href: '/food-certification/',
+    icon: 'fas fa-seedling'
+  },
+  {
+    title: 'Sustainability & ESG',
+    description: 'Explore updates on greenhouse gas reporting, carbon footprint verification, environmental performance, ESG disclosure, and sustainability-related regulations.',
+    href: '/sustainability/',
+    icon: 'fas fa-leaf'
+  },
+  {
+    title: 'Eurocert News & Announcements',
+    description: 'Read company announcements, important service updates, industry participation highlights, and other official communications from Eurocert Asia.',
+    href: '/about/',
+    icon: 'fas fa-bullhorn'
+  }
+];
+
+const featured = [
+  {
+    title: 'ISO 9001:2026 Published: What Organizations Need to Know',
+    category: 'ISO Standards & Management Systems',
+    description: 'The latest edition of ISO 9001 introduces refinements to quality management requirements, with greater emphasis on leadership, quality culture, and proactive management of risks and opportunities. Organizations certified under the previous edition should review the changes, assess their current quality management systems, and plan their transition in coordination with their certification body.',
+    href: '/management-system/iso-9001/',
+    icon: 'fas fa-certificate'
+  },
+  {
+    title: 'CE Marking: Why European Product Compliance Matters',
+    category: 'CE Marking & Product Compliance',
+    description: 'Manufacturers seeking access to the European market must understand the EU legislation and conformity assessment requirements applicable to their products. Depending on the product category, these may involve technical documentation, risk assessments, testing, declarations of conformity, and, where required, notified body involvement.',
+    href: '/ce-certification/',
+    icon: 'fas fa-industry'
+  },
+  {
+    title: 'Social Compliance Audits and Responsible Supply Chains',
+    category: 'Social & Ethical Compliance',
+    description: 'Responsible sourcing remains an important consideration for organizations operating in international supply chains. Social compliance assessments, including SMETA and relevant social accountability frameworks, help businesses evaluate labour conditions, occupational safety, ethical practices, and compliance with applicable requirements.',
+    href: '/social-audits/',
+    icon: 'fas fa-handshake'
+  },
+  {
+    title: 'Carbon Footprint Verification and the Growing Importance of GHG Reporting',
+    category: 'Sustainability & ESG',
+    description: 'As organizations strengthen sustainability reporting, the accuracy and credibility of greenhouse gas information are becoming increasingly important. Standards such as ISO 14064 provide recognized frameworks for greenhouse gas quantification, reporting, validation, and verification.',
+    href: '/sustainability/carbon-footprint/',
+    icon: 'fas fa-leaf'
+  },
+  {
+    title: 'Food Safety Certification and Stronger Supply Chain Confidence',
+    category: 'Food Safety & Agriculture',
+    description: 'Food safety management systems play an essential role in helping organizations identify food safety hazards, establish appropriate controls, and improve operational consistency. International frameworks such as ISO 22000, FSSC 22000, and HACCP support organizations in managing food safety responsibilities and meeting relevant customer and market requirements.',
+    href: '/food-certification/',
+    icon: 'fas fa-seedling'
+  }
+];
+
+const reasons = [
+  'Stay informed about certification and standards developments.',
+  'Understand changes to regulatory and compliance requirements.',
+  'Discover developments affecting international trade and product conformity.',
+  'Explore sustainability, ESG, and responsible business practices.',
+  'Follow important Eurocert Asia announcements.'
+];
+
+const recentCategories = ['All', ...Array.from(new Set(posts.map((post) => post.tag)))];
+const fmt = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<BaseLayout
+  title="Latest Certification News & Industry Updates | Eurocert Asia"
+  description="Stay informed with the latest certification standards, regulatory updates, industry compliance news and sustainability insights from Eurocert Asia."
+  canonicalUrl="https://www.eurocert.asia/news/"
+  ogImage="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782367859/eurocert/Untitled_design_19_.png.png"
+  keywords="Eurocert news, certification news, ISO standards updates, CE marking news, social compliance, food safety certification, sustainability ESG, regulatory updates"
+>
+<style is:global>@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2) format('woff2')}@font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2) format('woff2')}@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:400;font-display:swap;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2) format('woff2')}</style>
+
+<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#030a16]">
+  <div class="absolute inset-0 z-0">
+    <img src="https://res.cloudinary.com/dwnnakrrh/image/upload/f_auto,q_auto:good,w_1600/v1782368082/eurocert/h0.png.png" class="w-full h-full object-cover opacity-30" alt="Eurocert Asia certification news and industry updates" />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#030a16]/70 via-[#030a16]/40 to-[#030a16]"></div>
+  </div>
+  <div class="container mx-auto px-6 relative z-10 text-center py-20">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-eurogold-400/30 bg-eurogold-400/5 mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-eurogold-400 animate-pulse"></span>
+      <span class="heading-font text-[10px] text-eurogold-400 tracking-[0.3em] uppercase font-bold">Eurocert News Centre</span>
+    </div>
+    <h1 class="heading-font text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-3 tracking-tight" style="text-shadow:0 0 30px rgba(212,168,67,0.3)">Latest Certification <span class="text-eurogold-400">News</span></h1>
+    <p class="heading-font text-sm md:text-base text-eurogold-300/90 tracking-wide mb-5">Stay Informed. Stay Compliant. Stay Ahead.</p>
+    <p class="text-white/85 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">Explore the latest developments in international certification standards, regulatory requirements, industry compliance, and sustainable business practices.</p>
+    <p class="text-white/60 text-sm max-w-3xl mx-auto leading-relaxed mt-4">At <span class="text-white/90 font-semibold">Eurocert Asia</span>, we bring you relevant news, expert insights, and important updates from the world of third-party certification, inspection, and auditing. Whether you are a manufacturer, exporter, business owner, quality professional, or compliance manager, our news centre helps you stay informed about changing standards and industry requirements.</p>
+  </div>
+</section>
+
+<section class="py-14 lg:py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">From Our Desk</h4>
+      <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Latest News &amp; Updates</h2>
+      <p class="text-slate-500 text-sm mt-3 max-w-2xl mx-auto leading-relaxed">Stay up to date with important announcements, new standards, regulatory changes, and emerging developments affecting businesses across industries.</p>
+      <p class="text-slate-400 text-sm mt-3 max-w-2xl mx-auto leading-relaxed">Our news coverage focuses on the certification and compliance topics that matter most to organizations operating in domestic and international markets.</p>
+    </div>
+
+    <div class="text-center mb-8">
+      <h3 class="heading-font text-xl md:text-2xl font-bold text-slate-900 tracking-tight">Explore News by Category</h3>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categories.map((category) => (
+        <a href={category.href} class="group flex flex-col p-6 rounded-2xl border border-slate-100 bg-[#f8fafc] hover:bg-white hover:border-eurogold-400/50 hover:shadow-xl hover:shadow-slate-900/5 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-euro-600 flex items-center justify-center mb-4 group-hover:bg-eurogold-400 transition-colors">
+            <i class={`${category.icon} text-white group-hover:text-[#030a16] transition-colors`}></i>
+          </div>
+          <h4 class="heading-font text-base font-bold text-slate-900 mb-2 group-hover:text-euro-600 transition-colors">{category.title}</h4>
+          <p class="text-slate-500 text-sm leading-relaxed flex-1">{category.description}</p>
+          <span class="inline-flex items-center gap-2 mt-4 heading-font text-[10px] font-bold uppercase tracking-[0.15em] text-euro-600">
+            Explore <i class="fas fa-arrow-right text-[9px] transition-transform duration-300 group-hover:translate-x-1"></i>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="py-14 lg:py-20 bg-[#f8fafc]">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">In Focus</h4>
+      <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Featured Industry Updates</h2>
+      <p class="text-slate-500 text-sm mt-3 max-w-2xl mx-auto leading-relaxed">Explore selected developments influencing international certification, regulatory compliance, and business performance.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+      {featured.map((article, index) => (
+        <article class:list={['group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 lg:p-8 hover:border-eurogold-400/50 hover:shadow-xl hover:shadow-slate-900/5 transition-all duration-300', index === 0 && 'lg:col-span-2']}>
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-euro-600 flex items-center justify-center shrink-0 group-hover:bg-eurogold-400 transition-colors">
+              <i class={`${article.icon} text-white text-sm group-hover:text-[#030a16] transition-colors`}></i>
+            </div>
+            <div>
+              <span class="heading-font text-[9px] font-bold uppercase tracking-[0.15em] text-eurogold-600">{article.category}</span>
+              <h3 class="heading-font text-xl md:text-2xl font-bold text-slate-900 leading-snug mt-1 group-hover:text-euro-600 transition-colors">{article.title}</h3>
+            </div>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed mb-6">{article.description}</p>
+          <a href={article.href} class="mt-auto inline-flex items-center justify-center gap-2 self-start heading-font text-[10px] font-bold uppercase tracking-[0.15em] text-white bg-euro-600 rounded-full px-6 py-3 hover:bg-euro-700 transition-all shadow-lg shadow-euro-600/20">
+            Read More <i class="fas fa-arrow-right text-[9px] transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="py-14 lg:py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-10">
+      <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">More From Eurocert</h4>
+      <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Recent Articles</h2>
+      <p class="text-slate-400 text-sm mt-3 max-w-2xl mx-auto">Browse our archive of certification, auditing and compliance articles.</p>
+    </div>
+
+    <div id="news-filters" class="flex flex-wrap items-center justify-center gap-2 mb-10" role="tablist" aria-label="Filter news by category">
+      {recentCategories.map((category, index) => (
+        <button
+          type="button"
+          data-category={category}
+          class:list={[
+            'news-filter heading-font text-[10px] font-bold uppercase tracking-[0.15em] px-5 py-2.5 rounded-full border transition-all duration-200',
+            index === 0
+              ? 'bg-euro-600 border-euro-600 text-white shadow-lg shadow-euro-600/20'
+              : 'bg-white border-slate-200 text-slate-500 hover:border-eurogold-400 hover:text-euro-600'
+          ]}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    <div id="news-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {posts.map((post) => (
+        <article class="news-card group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:shadow-slate-900/5 hover:-translate-y-1 transition-all duration-300" data-category={post.tag}>
+          <a href={post.href} class="flex flex-col h-full">
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src={post.image} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#030a16]/60 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 heading-font text-[9px] font-bold uppercase tracking-wider text-[#030a16] bg-eurogold-400 px-3 py-1 rounded-full">{post.tag}</span>
+              {post.featured && (
+                <span class="absolute top-4 right-4 heading-font text-[9px] font-bold uppercase tracking-wider text-white bg-[#030a16]/70 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">Latest</span>
+              )}
+            </div>
+            <div class="flex flex-col flex-1 p-6">
+              <div class="flex items-center gap-2 text-[10px] text-slate-400 mb-3">
+                <i class="fas fa-calendar-alt text-eurogold-400"></i>
+                <span>{fmt.format(new Date(post.date))}</span>
+                <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                <span>{post.readTime}</span>
+              </div>
+              <h3 class="heading-font text-lg font-bold text-slate-900 leading-snug mb-3 group-hover:text-euro-600 transition-colors">{post.title}</h3>
+              <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-5">{post.excerpt}</p>
+              <span class="mt-auto inline-flex items-center gap-2 heading-font text-[10px] font-bold uppercase tracking-[0.15em] text-euro-600 group-hover:text-eurogold-500 transition-colors">
+                Read Article
+                <i class="fas fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div id="news-empty" class="hidden p-12 text-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50">
+      <i class="fas fa-newspaper text-slate-300 text-4xl mb-4"></i>
+      <p class="text-slate-400 text-sm">No articles found in this category.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 lg:py-20 bg-[#f8fafc]">
+  <div class="container mx-auto px-6">
+    <div class="max-w-4xl mx-auto grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-2">
+        <h4 class="heading-font text-[11px] text-euro-600 tracking-[0.5em] uppercase mb-2 font-bold">Stay Informed</h4>
+        <h2 class="heading-font text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight">Why Follow Eurocert Asia News?</h2>
+        <p class="text-slate-500 text-sm leading-relaxed mt-4">Compliance requirements and international standards continue to evolve. Access to reliable information helps organizations identify relevant changes and make informed decisions.</p>
+      </div>
+      <div class="lg:col-span-3">
+        <ul class="space-y-3">
+          {reasons.map((reason) => (
+            <li class="flex items-start gap-3 p-4 rounded-xl border border-slate-100 bg-white">
+              <span class="w-6 h-6 rounded-full bg-eurogold-400/15 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fas fa-check text-eurogold-600 text-[10px]"></i>
+              </span>
+              <span class="text-slate-600 text-sm leading-relaxed">{reason}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-14 lg:py-18 bg-[#030a16] relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-eurogold-400/10 blur-3xl"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="heading-font text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">Looking for Certification or Inspection Services?</h2>
+      <p class="text-white/60 text-sm md:text-base leading-relaxed mb-4">Stay prepared for evolving international standards and market requirements.</p>
+      <p class="text-white/60 text-sm md:text-base leading-relaxed mb-8">Eurocert Asia provides independent certification, inspection, and auditing services across management systems, product compliance, social accountability, food safety, and sustainability. Contact Eurocert Asia to learn more about our certification and inspection services.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="/" class="inline-flex items-center justify-center gap-2 heading-font text-[11px] font-bold uppercase tracking-[0.2em] text-[#031022] bg-eurogold-400 rounded-full px-8 py-3.5 hover:bg-eurogold-300 transition-all shadow-lg">
+          Explore Our Services <i class="fas fa-arrow-right text-[9px]"></i>
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center gap-2 heading-font text-[11px] font-bold uppercase tracking-[0.2em] text-white/80 border border-white/20 rounded-full px-8 py-3.5 hover:border-eurogold-400 hover:text-eurogold-400 transition-all">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var filters = document.querySelectorAll('.news-filter');
+    var cards = document.querySelectorAll('.news-card');
+    var empty = document.getElementById('news-empty');
+    if (!filters.length || !cards.length) return;
+
+    var activeClasses = 'bg-euro-600 border-euro-600 text-white shadow-lg shadow-euro-600/20';
+    var idleClasses = 'bg-white border-slate-200 text-slate-500 hover:border-eurogold-400 hover:text-euro-600';
+
+    function applyFilter(category) {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var match = category === 'All' || card.getAttribute('data-category') === category;
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+
+    filters.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var category = button.getAttribute('data-category');
+        filters.forEach(function (item) {
+          var isActive = item === button;
+          item.className = 'news-filter heading-font text-[10px] font-bold uppercase tracking-[0.15em] px-5 py-2.5 rounded-full border transition-all duration-200 ' + (isActive ? activeClasses : idleClasses);
+          item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+        applyFilter(category);
+      });
+    });
+  })();
+</script>
+</BaseLayout>

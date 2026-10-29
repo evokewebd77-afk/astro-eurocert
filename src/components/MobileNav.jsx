@@ -89,6 +89,7 @@ const MENU_ITEMS = [
       { title: 'FoSTaC Food Safety Training', href: '/training/fostac/' }
     ]
   },
+  { title: 'News & Updates', href: '/news/' },
   { title: 'Accreditations', href: '/accreditations/' },
   { title: 'Certified Clients', href: '/certified-clients/' },
   { title: 'Contact Us', href: '/contact/' }
